@@ -1,0 +1,6 @@
+Schlicker und Thomas anschreiben, wo Smartphone hin ist
+(B) DQR 101: Jeden einzelnen Fall dokumentieren +dqr
+(A) Surface Barzik ausbessern und dokumentieren
+(B) DQR 102: 10-20 Fälle untersuchen, warum dies der Fall ist +dqr
+(B) DQR 401: Wo liegt der Fehler? +dqr
+(B) DQR 404 und 406: Einige Beispielfälle anschauen und evtl. beheben +dqr
