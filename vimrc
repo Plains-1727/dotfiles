@@ -43,6 +43,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
 Plugin 'vim-python/python-syntax'
+Plugin 'itchyny/calendar.vim'
+Plugin 'sonph/onehalf', { 'rtp': 'vim' }
+Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'Yggdroot/indentLine'
+Plugin 'sainnhe/everforest'
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
 
 " Plugins must be added before the following line
 call vundle#end()
@@ -55,6 +62,9 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+" set markdown file extension
+let g:vim_markdown_auto_extension_ext = 'txt'
+
 " enable syntax highlighting
 syntax on
 
@@ -66,6 +76,10 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
+" split on the right and below
+set splitright
+set splitbelow
+
 " better command-line completion
 set wildmenu
 
@@ -75,16 +89,19 @@ set showcmd
 " highlighting searches
 set hlsearch
 
+" clear search highlighting
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" navigate through wrapped lines
+nnoremap j gj
+nnoremap k gk
+
 " use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
 
 " allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
-
-" split more naturally
-set splitright
-set splitbelow
 
 " split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -98,6 +115,9 @@ tnoremap <C-K> <C-W><C-K>
 tnoremap <C-L> <C-W><C-L>
 tnoremap <C-H> <C-W><C-H>
 
+" Display all highlighting groups for markdown
+nnoremap <silent> <Leader>g :source $VIMRUNTIME/syntax/hitest.vim<CR>
+
 " identify highlight group under cursor
 nnoremap <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -109,9 +129,6 @@ nnoremap <C-T> :NERDTreeToggle<CR>
 " navigate tabs
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
-
-" clear search highlighting
-"nnoremap <esc> :noh <CR>
 
 " when opening a new line an no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on
@@ -132,7 +149,15 @@ set expandtab
 " set encoding
 set encoding=utf-8
 
-colorscheme hexer
+" set colorscheme
+"colorscheme onehalfdark
+"colorscheme sonokai
+
+set background=dark
+
+let g:everforest_background = 'hard'
+
+colorscheme everforest
 
 " PEP8 indentation and better auto-indentation for python files
 " au BufNewFile,BufRead *.py
