@@ -112,5 +112,11 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Aliases
+alias todo="todo.sh"
+alias todols="todo.sh ls"
+alias todoadd="todo.sh add"
+
+# Environment variables
 # Make vim follow XDG Base Directory specification
 export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc"
