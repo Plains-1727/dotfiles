@@ -1,5 +1,30 @@
 # i3 config file (v4)
 
+# Autostart
+
+# launch virtual box guest additions
+exec --no-startup-id VBoxClient --vmsvga
+exec --no-startup-id VBoxClient --clipboard
+
+# start compositor for transparency effect
+exec --no-startup-id picom 
+ 
+# set wallpaper
+#exec feh -z --bg-scale ~/Pictures/Wallpaper/Space/*
+#exec feh --bg-scale ~/Pictures/Wallpaper/amulette_small.png
+exec ~/.fehbg
+
+# launch polybar
+exec --no-startup-id ~/bin/launch-polybar.sh
+
+# auto lock screen
+#exec --no-startup-id xautolock -time 10 -locker /home/jan/bin/lock.sh
+
+# run perl script to dynamicaly change workspace names
+exec --no-startup-id ~/bin/i3-renameworkspaces.pl 
+
+# General
+
 # Set mod key to alt
 set $mod Mod1
 
@@ -128,16 +153,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -147,7 +172,45 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Include custom scripts
-include ./i3-autostart
-include ./i3-custom-keybinds
-include ./i3-style
+# launch filebrowser (rofi)
+bindsym $mod+t exec "rofi -modi file-browser-extended -show file-browser-extended -font 'Roboto 8' -show-icons -icon-theme paper"
+
+# switch workspace next and previous
+bindsym $mod+n workspace next
+bindsym $mod+b workspace prev
+
+# lock screen
+bindsym $mod+Control+l exec /home/jan/bin/lock.sh
+
+# media control
+bindsym $mod+o exec ~/bin/volcontrol.sh up
+bindsym $mod+i exec ~/bin/volcontrol.sh down
+bindsym $mod+p exec "playerctl play-pause"
+
+# move to scratchpad
+bindsym $mod+shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# kill with just mod and q
+#bindsym $mod+q exec kill
+
+# Style
+
+# class                 border  bground text    indicator child_border
+#client.focused          #E06C75 #E06C75 #F8F8F2 #E06C75   #E06C75
+client.focused          #4b565c #a7c080 #4b565c #4b565c #4b565c
+client.focused_inactive #44475A #4b565c #F8F8F2 #44475A   #4b565c
+client.unfocused        #4b565c #4b565c #d3c6aa #4b565c  #4b565c
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+# disable window titlebars
+#for_window [class=".*"] border pixel
+
+# gaps
+gaps inner 20
+#gaps horizontal -60
+#gaps vertical -60
+
+
+smart_borders on
