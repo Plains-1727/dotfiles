@@ -1,5 +1,5 @@
-# launch thunar
-bindsym $mod+t exec thunar
+# launch filebrowser (rofi)
+bindsym $mod+t exec "rofi -modi file-browser-extended -show file-browser-extended -font 'Roboto 8' -show-icons -icon-theme paper"
 
 # switch workspace next and previous
 bindsym $mod+n workspace next

@@ -5,26 +5,15 @@ background-transparent = #00
 background-alt = #61AFEF
 foreground = ${self.white}
 foreground-alt = ${self.yellow}
-accent-01 = ${self.green}
+accent-01 = ${self.red}
 accent-02 = ${self.yellow}
 separator = ${self.red}
 
-; onehalf dark
-;blue = #61AFEF
-;yellow = #E5C07B
-;red = #E06C75
-;green = #98C379
-;white = #DCDFE4
-;gray = #4a4e56
-;light-gray = #a4a7ae
-
-; everforest
-blue = #7fbbb3
-cyan = #83c092
-yellow = #dbbc7f
-red = #e67e80
-green = #a7c080
-white = #d3c6aa
+blue = #61AFEF
+yellow = #E5C07B
+red = #E06C75
+green = #98C379
+white = #DCDFE4
 gray = #4a4e56
 light-gray = #a4a7ae
 
@@ -52,7 +41,7 @@ font-3 = "Roboto Mono:style=Bold:size=8;+3"
 
 modules-left = powermenu hostname i3
 modules-center = polyplayerctl
-modules-right = cpu memory filesystem pulseaudio polypamac date time
+modules-right = cpu memory filesystem pulseaudio date time
 
 ;wm-restack = i3
 
@@ -75,13 +64,14 @@ format-mounted-prefix-foreground = ${colors.light-gray}
 
 format-mounted = <label-mounted>
 format-mounted-background = ${colors.background}
+format-mounted-foreground = ${colors.light-gray}
 format-mounted-padding = 0
 
 format-unmounted = <label-unmounted>
 format-unmounted-background = ${colors.background}
 format-unmounted-padding = 0
 
-label-mounted = %{T4}/:%{T-} %percentage_used%%
+label-mounted = %{F#E06C75}%{T4}/:%{T-}%{F-} %percentage_used%%
 label-mounted-padding = 1
 
 label-unmounted = %mountpoint% not mounted
@@ -120,13 +110,13 @@ label-mode-background = ${colors.accent-01}
 label-mode-padding = 1
 
 ; focused = Active workspace on focused monitor
-label-focused = %{T4}%{F#a7c080}%index%:%{F-} %{F#dbbc7f}%name%%{F-}%{T-}
+label-focused = %{T4}%{F#E06C75}%index%:%{F-} %{F#E5C07B}%name%%{F-}%{T-}
 label-focused-background = ${colors.background}
 label-focused-padding = 1
 label-focused-underline = ${colors.accent-01}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{F#a7c080}%index%:%{F-} %name%
+label-unfocused = %{F#E06C75}%index%:%{F-} %name%
 label-unfocused-padding = 1
 label-unfocused-background = ${colors.background}
 
@@ -136,7 +126,7 @@ label-visible-background = ${colors.yellow}
 label-visible-padding = 0
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %{F#e67e89}%index%:%{F-} %name%
+label-urgent = %{F#E06C75}%index%:%{F-} %name%
 label-urgent-background = ${colors.red}
 label-urgent-padding = 1
 
@@ -152,7 +142,7 @@ interval = 2
 format-padding = 0
 format-background = ${colors.background}
 
-label =  %percentage:2%%
+label =%{F#E06C75}%{F-} %percentage:2%%
 label-padding = 1
 
 [module/memory]
@@ -165,7 +155,7 @@ format-prefix-foreground = ${colors.light-gray}
 format-padding = 0
 format-background = ${colors.background}
 
-label =  %percentage_used%%
+label = %{F#E06C75}%{F-} %percentage_used%%
 label-padding = 1
 
 [module/eth]
@@ -230,7 +220,8 @@ format-volume-padding = 0
 format-muted-background = ${colors.background}
 format-muted-padding = 0
 
-label-volume =  %percentage%%
+label-volume = %{F#E06C75}%{F-} %percentage%%
+label-volume-foreground = ${colors.light-gray}
 label-volume-padding = 1
 
 label-muted =  
@@ -319,39 +310,22 @@ menu-2-1-exec = menu-open-0
 
 [module/polyplayerctl]
 type = custom/script
-exec = $HOME/.config/polybar/polyplayerctl.sh
+exec = ~/bin/polyplayerctl.sh
 interval = 2
 
 format-prefix = " "
-format-prefix-foreground = ${colors.white}
+format-prefix-foreground = ${colors.accent-01}
 format-background = ${colors.background}
 format-padding = 1
-
-[module/polypamac]
-type = custom/script
-exec = $HOME/.config/polybar/polypamac.sh
-interval = 600
-
-format = <label>
-
-format-background = ${colors.background}
-format-padding = 0
-
-format-prefix = 
-format-prefix-background = ${colors.background}
-format-prefix-foreground = ${colors.light-gray}
-
-label-padding = 1
-label-foreground = ${colors.red}
 
 [module/hostname]
 type = custom/script
 exec = cat /etc/hostname
-interval = 300
+interval = 5
 
 format = <label>
 format-background = ${colors.gray}
-format-foreground = ${colors.white}
+format-foreground = ${colors.yellow}
 format-padding = 0
 
 format-suffix = 
