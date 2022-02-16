@@ -1,0 +1,6 @@
+# Peaclock config file
+style active-fg green
+style inactive-fg green
+style colon-fg green
+style date green
+style text green
