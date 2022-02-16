@@ -50,7 +50,10 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'sainnhe/everforest'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
+<<<<<<< HEAD
 Plugin 'ycm-core/YouCompleteMe'
+=======
+>>>>>>> 7c5c066a47b6d20b7dc09e6d0e604ef2c5ab8d45
 
 " Plugins must be added before the following line
 call vundle#end()

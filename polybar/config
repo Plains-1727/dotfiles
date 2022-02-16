@@ -52,7 +52,11 @@ font-3 = "Roboto Mono:style=Bold:size=8;+3"
 
 modules-left = powermenu hostname i3
 modules-center = polyplayerctl
+<<<<<<< HEAD
 modules-right = cpu memory filesystem alsa pulseaudio date time
+=======
+modules-right = cpu memory filesystem pulseaudio polypamac date time
+>>>>>>> 7c5c066a47b6d20b7dc09e6d0e604ef2c5ab8d45
 
 ;wm-restack = i3
 
@@ -250,6 +254,7 @@ bar-volume-empty = -
 
 click-right = pavucontrol
 
+<<<<<<< HEAD
 [module/alsa]
 type = internal/alsa
 
@@ -284,6 +289,8 @@ label-muted =  
 label-muted-foreground = ${colors.light-gray}
 label-muted-padding = 1
 
+=======
+>>>>>>> 7c5c066a47b6d20b7dc09e6d0e604ef2c5ab8d45
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
