@@ -1,13 +1,15 @@
 [colors]
-background = #282C34
+background = ${self.background-color}
+;background = ${self.background-transparent}
 background-semi = #80282c34
 background-transparent = #00
 background-alt = #61AFEF
 foreground = ${self.white}
 foreground-alt = ${self.yellow}
-accent-01 = ${self.green}
-accent-02 = ${self.yellow}
-separator = ${self.red}
+accent-01 = ${self.blue}
+accent-02 = ${self.orange}
+separator = ${self.gray}
+module-background-01 = ${self.background-color-2}
 
 ; onehalf dark
 ;blue = #61AFEF
@@ -19,14 +21,28 @@ separator = ${self.red}
 ;light-gray = #a4a7ae
 
 ; everforest
-blue = #7fbbb3
 cyan = #83c092
 yellow = #dbbc7f
 red = #e67e80
 green = #a7c080
-white = #d3c6aa
-gray = #4a4e56
+;white = #d3c6aa
+;gray = #4a4e56
 light-gray = #a4a7ae
+;background-color = #282c34
+
+; sonokai andromeda
+black = #181a1c
+white = #e1e3e4
+;red = #fb617e
+orange = #f89860
+;yellow = #edc763
+;green = #9ed06c
+blue = #6dcae8
+;purple = #bb97ee
+gray = #7e8294
+;light-gray = #2c2e34
+background-color = #2b2d3a
+background-color-2 = #3f445b
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -50,13 +66,9 @@ font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
 font-2 = "MesloLGS NF:style=Regular:size=14;+4"
 font-3 = "Roboto Mono:style=Bold:size=8;+3"
 
-modules-left = powermenu hostname i3
-modules-center = polyplayerctl
-<<<<<<< HEAD
-modules-right = cpu memory filesystem alsa pulseaudio date time
-=======
-modules-right = cpu memory filesystem pulseaudio polypamac date time
->>>>>>> 7c5c066a47b6d20b7dc09e6d0e604ef2c5ab8d45
+modules-left = powermenu hostname polyplayerctl
+modules-center = i3
+modules-right = cpu s memory s filesystem s alsa pulseaudio date time
 
 ;wm-restack = i3
 
@@ -74,18 +86,23 @@ interval = 25
 
 mount-0 = /
 
-format-mounted-prefix = 
-format-mounted-prefix-foreground = ${colors.light-gray}
+format-mounted-prefix = %{T4}/:%{T-}
+format-mounted-prefix-foreground = ${colors.accent-02}
+format-mounted-prefix-background = ${colors.background}
 
 format-mounted = <label-mounted>
 format-mounted-background = ${colors.background}
 format-mounted-padding = 0
 
+format-unmounted-prefix = %{T4}/:%{T-} 
+format-unmounted-prefix-foreground = ${colors.accent-02}
+format-unmounted-prefix-background = ${colors.background}
+
 format-unmounted = <label-unmounted>
 format-unmounted-background = ${colors.background}
 format-unmounted-padding = 0
 
-label-mounted = %{T4}/:%{T-} %percentage_used%%
+label-mounted = %percentage_used%%
 label-mounted-padding = 1
 
 label-unmounted = %mountpoint% not mounted
@@ -101,22 +118,27 @@ enable-scroll = true
 wrapping-scroll = false
 fuzzy-match = true
 
-;ws-icon-0 = term;%{T3}%{T-}
-;ws-icon-1 = browser;
-;ws-icon-2 = mail;
-;ws-icon-3 = ica;
-;ws-icon-4 = appearance;
-;ws-icon-5 = font;
-;ws-icon-6 = writer;
-;ws-icon-7 = calc;
-;ws-icon-8 = thunar;
-;ws-icon-9 = gimp;
-;ws-icon-10 = cmus;
+ws-icon-0 = term;%{T3}%{T-}
+ws-icon-1 = browser;
+ws-icon-2 = mail;
+ws-icon-3 = ica;
+ws-icon-4 = appearance;
+ws-icon-5 = font;
+ws-icon-6 = writer;
+ws-icon-7 = calc;
+ws-icon-8 = thunar;
+ws-icon-9 = gimp;
+ws-icon-10 = cmus;
+ws-icon-11 = urxvt;%{T3}%{T-}
+ws-icon-12 = firefox;%{T3}%{T-}
+ws-icon-13 = music;
+ws-icon-14 = main;
 
-;ws-icon-default = 
+ws-icon-default = 
 
 format = <label-state>
 format-padding = 0
+format-background = ${colors.background}
 
 ; Only show workspaces on the same output as the bar
 label-mode = %mode%
@@ -124,52 +146,55 @@ label-mode-background = ${colors.accent-01}
 label-mode-padding = 1
 
 ; focused = Active workspace on focused monitor
-label-focused = %{T4}%{F#a7c080}%index%:%{F-} %{F#dbbc7f}%name%%{F-}%{T-}
-label-focused-background = ${colors.background}
+label-focused = %{T4}%index%: %icon%%{T-}
+label-focused-foreground = ${colors.accent-02}
 label-focused-padding = 1
 label-focused-underline = ${colors.accent-01}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %{F#a7c080}%index%:%{F-} %name%
+label-unfocused = %index%: %icon%
 label-unfocused-padding = 1
 label-unfocused-background = ${colors.background}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%: %name%
-label-visible-background = ${colors.yellow}
 label-visible-padding = 0
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %{F#e67e89}%index%:%{F-} %name%
-label-urgent-background = ${colors.red}
+label-urgent = %{67e89}%index%:%{F-} %name%
 label-urgent-padding = 1
 
 label-separator = 
-label-separator-foreground = ${colors.light-gray}
-label-separator-background = ${colors.background}
-label-separator-padding = 0
+;label-separator-foreground = ${colors.light-gray}
+;label-separator-background = ${colors.background}
+label-separator-padding = 1
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 
+format-prefix = 
+format-prefix-foreground = ${colors.accent-02}
+format-prefix-background = ${colors.background}
+
 format-padding = 0
 format-background = ${colors.background}
 
-label =  %percentage:2%%
+label = %percentage:2%%
 label-padding = 1
 
 [module/memory]
 type = internal/memory
 interval = 2
 
-format-prefix = 
-format-prefix-foreground = ${colors.light-gray}
+format-prefix = 
+format-prefix-foreground = ${colors.accent-02}
+format-prefix-background = ${colors.background}
 
 format-padding = 0
 format-background = ${colors.background}
 
-label =  %percentage_used%%
+label = %percentage_used%%
 label-padding = 1
 
 [module/eth]
@@ -194,12 +219,12 @@ interval = 99
 date = "%d.%m.%Y"
 
 format-prefix = 
-format-prefix-foreground = ${colors.gray}
+format-prefix-foreground = ${self.label-background}
 format-prefix-background = ${colors.background}
 format-padding = 0
 
 label = %{T4}%date%%{T-}
-label-background = ${colors.gray}
+label-background = ${colors.module-background-01}
 label-foreground = ${colors.white}
 label-padding = 1
 
@@ -210,13 +235,13 @@ interval = 5
 time = %H:%M
 
 format-prefix = 
-format-prefix-foreground = ${colors.white}
+format-prefix-foreground = ${self.label-background}
 format-prefix-background = ${module/date.label-background}
 format-padding = 0
 
 label = %{T4}%time%%{T-}
-label-background = ${colors.white}
-label-foreground = ${colors.background}
+label-background = ${colors.accent-01}
+label-foreground = ${colors.black}
 label-padding = 1
 
 [module/pulseaudio]
@@ -254,7 +279,6 @@ bar-volume-empty = -
 
 click-right = pavucontrol
 
-<<<<<<< HEAD
 [module/alsa]
 type = internal/alsa
 
@@ -267,30 +291,24 @@ master-mixer = Master
 mapped = true
 interval = 5
 
+format-volume-prefix = 
+format-volume-prefix-foreground = ${colors.accent-02}
+format-volume-prefix-background = ${colors.background}
+
 format-volume = <label-volume>
-
-format-volume-prefix = 
-format-volume-prefix-foreground = ${colors.light-gray}
-format-volume-prefix-padding = 0
-
 format-volume-background = ${colors.background}
 format-volume-padding = 0
-
-format-muted-prefix = 
-format-muted-prefix-foreground = ${colors.light-gray}
 
 format-muted-background = ${colors.background}
 format-muted-padding = 0
 
-label-volume =  %percentage%%
+label-volume = %percentage%%
 label-volume-padding = 1
 
 label-muted =  
 label-muted-foreground = ${colors.light-gray}
 label-muted-padding = 1
 
-=======
->>>>>>> 7c5c066a47b6d20b7dc09e6d0e604ef2c5ab8d45
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
@@ -316,14 +334,14 @@ type = custom/menu
 expand-right = true
 
 format-padding= 0
-format-foreground = ${colors.background}
+format-foreground = ${colors.black}
 format-background = ${colors.accent-01}
 
 format-suffix = 
 format-suffix-foreground = ${self.format-background}
-format-suffix-background = ${colors.gray}
+format-suffix-background = ${colors.module-background-01}
 
-label-open = 
+label-open = %{T3}%{T-}
 label-open-padding = 1
 
 label-close = 
@@ -343,10 +361,15 @@ menu-1-1-padding = 1
 menu-2-0-padding = 1
 menu-2-1-padding = 1
 
+menu-3-0-padding = 1
+menu-3-1-padding = 1
+
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = shutdown
 menu-0-1-exec = menu-open-2
+menu-0-2 = logout
+menu-0-2-exec = menu-open-3
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
@@ -358,13 +381,18 @@ menu-2-0-exec = shutdown now
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
+menu-3-0 = logout
+menu-3-0-exec = i3-msg exit
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
 [module/polyplayerctl]
 type = custom/script
 exec = $HOME/.config/polybar/polyplayerctl.sh
 interval = 2
 
 format-prefix = " "
-format-prefix-foreground = ${colors.white}
+format-prefix-foreground = ${colors.accent-02}
 format-background = ${colors.background}
 format-padding = 1
 
@@ -378,10 +406,6 @@ format = <label>
 format-background = ${colors.background}
 format-padding = 0
 
-format-prefix = 
-format-prefix-background = ${colors.background}
-format-prefix-foreground = ${colors.light-gray}
-
 label-padding = 1
 label-foreground = ${colors.red}
 
@@ -391,16 +415,24 @@ exec = cat /etc/hostname
 interval = 300
 
 format = <label>
-format-background = ${colors.gray}
+format-background = ${colors.module-background-01}
 format-foreground = ${colors.white}
 format-padding = 0
 
 format-suffix = 
 format-suffix-background = ${colors.background}
-format-suffix-foreground = ${colors.gray}
+format-suffix-foreground = ${self.format-background}
 
 label = %{T4}%output%%{T-}
 label-padding = 1
+
+[module/s]
+type = custom/text
+content = 
+
+content-foreground = ${colors.separator}
+content-background = ${colors.background}
+content-padding = 1
 
 [settings]
 screenchange-reload = true
