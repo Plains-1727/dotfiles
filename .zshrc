@@ -118,10 +118,3 @@ alias todols="todo.sh ls"
 alias todoadd="todo.sh add"
 alias ll="ls -gGh --group-directories-first"
 alias cal="calcurse"
-
-# Environment variables
-# Add /home/jan/bin to PATH
-path+=/home/jan/bin
-
-# Make vim follow XDG Base Directory specification
-export VIMINIT="set nocp | source ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc"

@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+q kill
 
 # start rofi
-bindcode $mod+40 exec "rofi -modi drun,run -show drun -font 'Roboto 8' -show-icons -icon-theme Papirus" 
+bindcode $mod+40 exec "rofi -modi drun,run -show drun -font 'Roboto 8' -show-icons -icon-theme Flat-Remix-Blue-Dark" 
 
 # change focus
 bindsym $mod+h focus left

@@ -1,11 +1,11 @@
 {
     "classes": {
-        "firefox": "ff",
         "gnome-terminal": "term",
         "libreoffice-writer": "writer",
         "libreoffice-calc": "calc",
         "chromium-browser": "chrome",
         "brave-browser": "brave",
+        "tor browser": "tor",
     },
     
     "instances": {
@@ -13,5 +13,6 @@
 
    "staticnames": {
         "1": "main",
+        "9": "music"
     }
 }

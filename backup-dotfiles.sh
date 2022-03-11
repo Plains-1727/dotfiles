@@ -1,13 +1,29 @@
 #!/bin/bash
 
-cd ~/git/dotfiles
+cd ~/.dotfiles
 
-cp -r ~/.config/{polybar,i3,picom,rofi,spotify-tui,vim/vimrc,vim/colors} ./
-cp ~/.zshrc ./zshrc
-cp -r ~/.todo ./todo
-cp ~/bin/backup-dotfiles.sh ./
+paths=(
+    ".profile"
+    ".zshrc"
+    ".i3workspaceconfig"
+    ".xinitrc"
+    ".Xresources"
+    ".config/i3"
+    ".config/polybar"
+    ".config/peaclock"
+    ".config/picom"
+    ".config/rofi"
+    ".config/nvim"
+    "bin/backup-dotfiles.sh"
+)
 
-git add *
-git commit -m "Backup $(date "+%Y-%m-%d %H:%M")"
-git status
-git push origin
+for p in "${paths[@]}"
+do
+    cp -rf ~/$p ~/.dotfiles/
+done
+
+
+#git add .
+#git commit -m "Backup $(date "+%Y-%m-%d %H:%M")"
+#git status
+#git push origin

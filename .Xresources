@@ -1,41 +1,41 @@
 !! Colorscheme
 
 ! special
-*.foreground: #d3c6aa
-*.background: #2b3339
+*.foreground: #e1e3e4
+*.background: #2b2d3a
 *.cursorColor: #afbfbf
 
 ! black
-*.color0: #4b565c
-*.color8: #626c71
+*.color0: #181a1c
+*.color8: #181a1c
 
 ! red
-*.color1: #e67e80
-*.color9: #ec9191
+*.color1: #fb617e
+*.color9: #fb617e
 
 ! green
-*.color2: #a7c080
-*.color10: #b4c992
+*.color2: #9ed06c
+*.color10: #9ed06c
 
 ! yellow
-*.color3: #dbbc7f
-*.color11: #e1c591
+*.color3: #edc763
+*.color11: #edc763
 
 ! blue
-*.color4: #7fbbb3
-*.color12: #92c5be
+*.color4: #6dcae8
+*.color12: #6dcae8
 
 ! magenta
-*.color5: #d699b6
-*.color13: #dca7c0
+*.color5: #bb97ee
+*.color13: #bb97ee
 
 ! cyan
-*.color6: #83c092
-*.color14: #95c9a1
+*.color6: #f89860
+*.color14: #f89860
 
 ! white
-*.color7: #d3c6aa
-*.color15: #d9ceb6
+*.color7: #e1e3e4
+*.color15: #e1e3e4
 
 
 !! URxvt Appearance
@@ -70,4 +70,8 @@ URxvt.urlButton: 1
 
 !! transparancy
 URxvt*depth: 32
-URxvt*background: [88]#2b3339
+URxvt*background: [88]#2b2d3a
+
+!! Font settings
+Xft.dpi: 96
+
