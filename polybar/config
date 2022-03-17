@@ -133,6 +133,9 @@ ws-icon-11 = urxvt;%{T3}%{T-}
 ws-icon-12 = firefox;%{T3}%{T-}
 ws-icon-13 = music;
 ws-icon-14 = main;
+ws-icon-15 = atom;%{T3}%{T-}
+ws-icon-16 = vim;%{T3}%{T-}
+ws-icon-17 = tor;%{T3}%{T-}
 
 ws-icon-default = 
 
