@@ -21,6 +21,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
+Plug 'mcchrish/nnn.vim'
 
 call plug#end()
 
@@ -86,6 +87,9 @@ tnoremap <C-H> <C-W><C-H>
 
 " show NERDTree
 nnoremap <C-T> :NERDTreeToggle<CR>
+
+" show NnnExplorer
+nnoremap <C-N> :NnnExplorer<CR>
 
 " navigate tabs
 nnoremap <C-Left> :tabprevious<CR>
