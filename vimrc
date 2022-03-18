@@ -1,35 +1,8 @@
-" XDG support
-if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
-
-if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
-if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
-if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
-
-set runtimepath^=$XDG_CONFIG_HOME/vim
-set runtimepath+=$XDG_DATA_HOME/vim
-set runtimepath+=$XDG_CONFIG_HOME/vim/after
-set runtimepath+=$XDG_CONFIG_HOME/vim/colors
-
-set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
-set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
-
-let g:netrw_home = $XDG_DATA_HOME."/vim"
-call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
-set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p', 0700)
-
-set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
-set directory=$XDG_CACHE_HOME/vim/swap   | call mkdir(&directory, 'p', 0700)
-set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p', 0700)
-
-if !has('nvim') " Neovim has its own special location
-  set viminfofile=$XDG_CACHE_HOME/vim/viminfo
-endif
-
 set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -50,10 +23,9 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'sainnhe/everforest'
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
-<<<<<<< HEAD
 Plugin 'ycm-core/YouCompleteMe'
-=======
->>>>>>> 7c5c066a47b6d20b7dc09e6d0e604ef2c5ab8d45
+Plugin 'tidalcycles/vim-tidal'
+Plugin 'sainnhe/sonokai'
 
 " Plugins must be added before the following line
 call vundle#end()
@@ -159,9 +131,15 @@ set encoding=utf-8
 
 set background=dark
 
+" Colorscheme settings for Sonokai
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+
+" Colorscheme settings for everforest
 let g:everforest_background = 'hard'
 
-colorscheme everforest
+colorscheme sonokai
 
 " PEP8 indentation and better auto-indentation for python files
 " au BufNewFile,BufRead *.py
@@ -177,4 +155,8 @@ colorscheme everforest
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhiteSpace /\s\+$/
 
 let python_highlight_all=1
+
+" Target for tidal cycles plugin
+let g:tidal_target = "terminal"
+
 syntax on
