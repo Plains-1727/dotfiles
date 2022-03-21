@@ -38,7 +38,7 @@ orange = #f89860
 yellow = #edc763
 green = #9ed06c
 blue = #6dcae8
-;purple = #bb97ee
+purple = #bb97ee
 gray = #7e8294
 ;light-gray = #2c2e34
 background-color = #2b2d3a
@@ -82,7 +82,7 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
-[bar/mybar]
+[bar/pc_bar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 30 
@@ -103,10 +103,11 @@ font-0 = "Roboto Mono:style=Regular:size=8;+3"
 font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
 font-2 = "MesloLGS NF:style=Regular:size=14;+4"
 font-3 = "Roboto Mono:style=Bold:size=8;+3"
+font-4 = "MesloLGS NF:style=Regular:size=40"
 
-modules-left = powermenu hostname 
-modules-center = i3
-modules-right = backlight s battery s cpu s memory s filesystem s alsa pulseaudio s wlan date time
+modules-left = powermenu i3
+modules-center = 
+modules-right = pulseaudio s cpu s memory s filesystem s  date s time
 
 ;wm-restack = i3
 
@@ -177,7 +178,7 @@ format-mounted-prefix-foreground = ${self.format-mounted-foreground}
 format-mounted-prefix-background = ${colors.background}
 
 format-mounted = <label-mounted>
-format-mounted-foreground = ${colors.red}
+format-mounted-foreground = ${colors.purple}
 format-mounted-background = ${colors.background}
 format-mounted-padding = 0
 
@@ -262,10 +263,9 @@ type = internal/cpu
 interval = 2
 
 format-prefix = 
-format-prefix-foreground = ${colors.accent-02}
-format-prefix-background = ${colors.background}
 
 format-padding = 0
+format-foreground = ${colors.yellow}
 format-background = ${colors.background}
 
 label = %percentage:2%%
@@ -276,10 +276,9 @@ type = internal/memory
 interval = 2
 
 format-prefix = 
-format-prefix-foreground = ${colors.accent-02}
-format-prefix-background = ${colors.background}
 
 format-padding = 0
+format-foreground = ${colors.orange}
 format-background = ${colors.background}
 
 label = %percentage_used%%
@@ -313,7 +312,7 @@ format-prefix-foreground = ${self.format-foreground}
 ;format-prefix-background = ${colors.background}
 
 format-padding = 0
-format-foreground = ${colors.foreground}
+format-foreground = ${colors.green}
 format-background = ${colors.background}
 
 label = %{T4}%date%%{T-}
@@ -326,14 +325,13 @@ interval = 5
 time = %H:%M
 
 format-prefix = 
-format-prefix-foreground = ${self.format-foreground}
 ;format-prefix = %{T5}%{T-}
 ;format-prefix-foreground = ${self.label-background}
 ;format-prefix-background = ${module/date.label-background}
 ;format-prefix-margin = 0
 ;format-prefix-padding = 0
 
-format-foreground = ${colors.foreground}
+format-foreground = ${colors.yellow}
 format-background = ${colors.background}
 format-padding = 0
 
