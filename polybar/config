@@ -7,7 +7,7 @@ background-alt = #61AFEF
 foreground = ${self.white}
 foreground-alt = ${self.yellow}
 accent-01 = ${self.blue}
-accent-02 = ${self.orange}
+accent-02 = ${self.yellow}
 separator = ${self.gray}
 module-background-01 = ${self.background-color-2}
 
@@ -22,9 +22,9 @@ module-background-01 = ${self.background-color-2}
 
 ; everforest
 cyan = #83c092
-yellow = #dbbc7f
-red = #e67e80
-green = #a7c080
+;yellow = #dbbc7f
+;red = #e67e80
+;green = #a7c080
 ;white = #d3c6aa
 ;gray = #4a4e56
 light-gray = #a4a7ae
@@ -33,21 +33,59 @@ light-gray = #a4a7ae
 ; sonokai andromeda
 black = #181a1c
 white = #e1e3e4
-;red = #fb617e
+red = #fb617e
 orange = #f89860
-;yellow = #edc763
-;green = #9ed06c
+yellow = #edc763
+green = #9ed06c
 blue = #6dcae8
 ;purple = #bb97ee
 gray = #7e8294
 ;light-gray = #2c2e34
 background-color = #2b2d3a
+background-color-1 = #333648
 background-color-2 = #3f445b
+background-color-3 = #181819
+
+[bar/notebook_bar]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 32 
+bottom = true
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "Roboto Mono:style=Regular:size=8;+3"
+font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
+font-2 = "MesloLGS NF:style=Regular:size=14;+4"
+font-3 = "Roboto Mono:style=Bold:size=8;+3"
+font-4 = "MesloLGS NF:style=Regular:size=40"
+
+modules-left = powermenu i3 
+modules-center = 
+modules-right = pulseaudio s battery s backlight s wifi s date s time
+
+;wm-restack = i3
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20 
+height = 30 
 bottom = true
 fixed-center = true
 
@@ -66,9 +104,9 @@ font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
 font-2 = "MesloLGS NF:style=Regular:size=14;+4"
 font-3 = "Roboto Mono:style=Bold:size=8;+3"
 
-modules-left = powermenu hostname polyplayerctl
+modules-left = powermenu hostname 
 modules-center = i3
-modules-right = cpu s memory s filesystem s alsa pulseaudio date time
+modules-right = backlight s battery s cpu s memory s filesystem s alsa pulseaudio s wlan date time
 
 ;wm-restack = i3
 
@@ -80,6 +118,54 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
+[module/backlight]
+type = internal/backlight
+card = amdgpu_bl0
+enable-scroll = true
+
+format = <label>
+
+format-prefix =  
+format-prefix-foreground = ${self.format-foreground}
+
+format-background = ${colors.background}
+format-foreground = ${colors.yellow}
+format-padding = 0
+
+label = %percentage%%
+label-padding = 1
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 90
+
+format-charging = <label-charging>
+format-charging-background = ${colors.background}
+format-charging-padding = 0
+
+format-discharging-prefix =   
+format-discharging-prefix-foreground = ${self.format-discharging-foreground}
+
+format-discharging = <label-discharging>
+format-discharging-foreground = ${colors.green}
+format-discharging-background = ${colors.background}
+format-discharging-padding = 0
+
+format-full = <label-full>
+format-full-background = ${colors.background}
+format-full-padding = 0
+
+label-discharging = %percentage%%
+label-discharging-padding = 1
+
+label-charging =  %percentage%%
+label-charging-padding = 1
+
+label-full = %percentage%
+label-full-padding = 1
+
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -87,10 +173,11 @@ interval = 25
 mount-0 = /
 
 format-mounted-prefix = %{T4}/:%{T-}
-format-mounted-prefix-foreground = ${colors.accent-02}
+format-mounted-prefix-foreground = ${self.format-mounted-foreground}
 format-mounted-prefix-background = ${colors.background}
 
 format-mounted = <label-mounted>
+format-mounted-foreground = ${colors.red}
 format-mounted-background = ${colors.background}
 format-mounted-padding = 0
 
@@ -133,9 +220,6 @@ ws-icon-11 = urxvt;%{T3}%{T-}
 ws-icon-12 = firefox;%{T3}%{T-}
 ws-icon-13 = music;
 ws-icon-14 = main;
-ws-icon-15 = atom;%{T3}%{T-}
-ws-icon-16 = vim;%{T3}%{T-}
-ws-icon-17 = tor;%{T3}%{T-}
 
 ws-icon-default = 
 
@@ -145,12 +229,12 @@ format-background = ${colors.background}
 
 ; Only show workspaces on the same output as the bar
 label-mode = %mode%
-label-mode-background = ${colors.accent-01}
 label-mode-padding = 1
 
 ; focused = Active workspace on focused monitor
 label-focused = %{T4}%index%: %icon%%{T-}
 label-focused-foreground = ${colors.accent-02}
+label-focused-background = ${colors.background}
 label-focused-padding = 1
 label-focused-underline = ${colors.accent-01}
 
@@ -165,12 +249,13 @@ label-visible-padding = 0
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %{67e89}%index%:%{F-} %name%
+label-urgent-background = ${colors.background}
 label-urgent-padding = 1
 
-label-separator = 
-;label-separator-foreground = ${colors.light-gray}
-;label-separator-background = ${colors.background}
-label-separator-padding = 1
+;label-separator = 
+label-separator = " "
+label-separator-background = ${colors.background}
+label-separator-padding = 0
 
 [module/cpu]
 type = internal/cpu
@@ -221,14 +306,17 @@ interval = 99
 
 date = "%d.%m.%Y"
 
-format-prefix = 
-format-prefix-foreground = ${self.label-background}
-format-prefix-background = ${colors.background}
+format-prefix = 
+format-prefix-foreground = ${self.format-foreground}
+;format-prefix = %{T5}%{T-}
+;format-prefix-foreground = ${self.label-background}
+;format-prefix-background = ${colors.background}
+
 format-padding = 0
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 label = %{T4}%date%%{T-}
-label-background = ${colors.module-background-01}
-label-foreground = ${colors.white}
 label-padding = 1
 
 [module/time]
@@ -237,32 +325,39 @@ interval = 5
 
 time = %H:%M
 
-format-prefix = 
-format-prefix-foreground = ${self.label-background}
-format-prefix-background = ${module/date.label-background}
+format-prefix = 
+format-prefix-foreground = ${self.format-foreground}
+;format-prefix = %{T5}%{T-}
+;format-prefix-foreground = ${self.label-background}
+;format-prefix-background = ${module/date.label-background}
+;format-prefix-margin = 0
+;format-prefix-padding = 0
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 format-padding = 0
 
 label = %{T4}%time%%{T-}
-label-background = ${colors.accent-01}
-label-foreground = ${colors.black}
+;label-background = ${colors.accent-01}
 label-padding = 1
 
 [module/pulseaudio]
 type = internal/pulseaudio
 use-ui-max = false
 
-format-volume-prefix = 
-format-volume-prefix-foreground = ${colors.light-gray}
-format-volume-prefix-padding = 0
+format-volume-prefix = ""
+format-volume-prefix-foreground = ${self.format-volume-foreground}
+format-volume-prefix-background = ${colors.background}
 
 format-volume = <label-volume>
+format-volume-foreground = ${colors.blue}
 format-volume-background = ${colors.background}
 format-volume-padding = 0
 
 format-muted-background = ${colors.background}
 format-muted-padding = 0
 
-label-volume =  %percentage%%
+label-volume = %percentage%%
 label-volume-padding = 1
 
 label-muted =  
@@ -277,6 +372,7 @@ ramp-volume-padding = 0
 
 bar-volume-width = 10
 bar-volume-indicator = |
+bar-volume-indicator-foreground = ${colors.accent-02}
 bar-volume-fill = -
 bar-volume-empty = -
 
@@ -340,9 +436,9 @@ format-padding= 0
 format-foreground = ${colors.black}
 format-background = ${colors.accent-01}
 
-format-suffix = 
+format-suffix = %{T5}%{T-}
 format-suffix-foreground = ${self.format-background}
-format-suffix-background = ${colors.module-background-01}
+format-suffix-background = ${colors.background}
 
 label-open = %{T3}%{T-}
 label-open-padding = 1
@@ -389,6 +485,27 @@ menu-3-0-exec = i3-msg exit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
 
+[module/wifi]
+type = internal/network
+interface = wlan0
+
+format-connected-prefix = 
+format-connected-prefix-foreground = ${self.format-connected-foreground}
+format-connected-prefix-padding = 0
+
+format-connected = <label-connected>
+format-connected-background = ${colors.background}
+format-connected-foreground = ${colors.orange}
+format-connected-padding = 0
+
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.background}
+
+label-connected = %essid%
+label-connected-padding = 1
+
+label-disconnected = not connected
+
 [module/polyplayerctl]
 type = custom/script
 exec = $HOME/.config/polybar/polyplayerctl.sh
@@ -422,7 +539,7 @@ format-background = ${colors.module-background-01}
 format-foreground = ${colors.white}
 format-padding = 0
 
-format-suffix = 
+format-suffix = %{T5}%{T-}
 format-suffix-background = ${colors.background}
 format-suffix-foreground = ${self.format-background}
 
@@ -431,11 +548,30 @@ label-padding = 1
 
 [module/s]
 type = custom/text
-content = 
+;content = 
+content = " "
 
 content-foreground = ${colors.separator}
 content-background = ${colors.background}
 content-padding = 1
+
+[module/tail_left]
+type = custom/text
+content = %{T5}%{T-}
+
+content-foreground = ${colors.background}
+content-background = ${colors.background-transparent}
+content-margin = 0
+content-padding = 0
+
+[module/tail_right]
+type = custom/text
+content = %{T5}%{T-}
+
+content-foreground = ${colors.background}
+content-background = ${colors.background-transparent}
+content-margin = 0
+content-padding = 0
 
 [settings]
 screenchange-reload = true
