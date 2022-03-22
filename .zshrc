@@ -10,12 +10,9 @@ export ZSH="/home/jan/.oh-my-zsh"
 #ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_CUSTOM=/usr/share/zsh
 
-# Plusing
-plugins=(git zsh-syntax-highlighting)
+# Plugins
+plugins=(git fast-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
-
-
-# User configuration
 
 #source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source ~/.profile
