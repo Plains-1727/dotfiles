@@ -21,13 +21,13 @@ module-background-01 = ${self.background-color-2}
 ;light-gray = #a4a7ae
 
 ; everforest
-cyan = #83c092
+;cyan = #83c092
 ;yellow = #dbbc7f
 ;red = #e67e80
 ;green = #a7c080
 ;white = #d3c6aa
 ;gray = #4a4e56
-light-gray = #a4a7ae
+;light-gray = #a4a7ae
 ;background-color = #282c34
 
 ; sonokai andromeda
@@ -68,7 +68,7 @@ font-2 = "MesloLGS NF:style=Regular:size=14;+4"
 font-3 = "Roboto Mono:style=Bold:size=8;+3"
 font-4 = "MesloLGS NF:style=Regular:size=40"
 
-modules-left = powermenu i3 
+modules-left = powermenu s i3 
 modules-center = 
 modules-right = pulseaudio s battery s backlight s wifi s date s time
 
@@ -99,15 +99,16 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Roboto Mono:style=Regular:size=8;+3"
+font-0 = "mononoki Nerd Font Mono:style=Bold:size=9;+3"
 font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
-font-2 = "MesloLGS NF:style=Regular:size=14;+4"
-font-3 = "Roboto Mono:style=Bold:size=8;+3"
-font-4 = "MesloLGS NF:style=Regular:size=40"
+font-2 = "mononoki Nerd Font Mono:style=Regular:size=16;+4"
+font-3 = "mononoki Nerd Font:style=Bold:size=9;+3"
+font-4 = "mononoki Nerd Font Mono:style=Regular:size=24;+5"
+;font-4 = "MesloLGS NF:style=Regular:size=40"
 
-modules-left = powermenu i3
-modules-center = 
-modules-right = pulseaudio s cpu s memory s filesystem s  date s time
+modules-left = powermenu
+modules-center = i3
+modules-right = pulseaudio filesystem datetime
 
 ;wm-restack = i3
 
@@ -174,27 +175,19 @@ interval = 25
 mount-0 = /
 
 format-mounted-prefix = %{T4}/:%{T-}
-format-mounted-prefix-foreground = ${self.format-mounted-foreground}
-format-mounted-prefix-background = ${colors.background}
 
 format-mounted = <label-mounted>
-format-mounted-foreground = ${colors.purple}
-format-mounted-background = ${colors.background}
-format-mounted-padding = 0
+format-mounted-foreground = ${colors.yellow}
 
 format-unmounted-prefix = %{T4}/:%{T-} 
-format-unmounted-prefix-foreground = ${colors.accent-02}
-format-unmounted-prefix-background = ${colors.background}
 
 format-unmounted = <label-unmounted>
-format-unmounted-background = ${colors.background}
-format-unmounted-padding = 0
+format-unmounted-foreground = ${colors.purple}
 
 label-mounted = %percentage_used%%
 label-mounted-padding = 1
 
 label-unmounted = %mountpoint% not mounted
-label-unmounted-background = ${colors.background}
 label-unmounted-padding = 1
 
 [module/i3]
@@ -207,36 +200,37 @@ wrapping-scroll = false
 fuzzy-match = true
 
 ws-icon-0 = term;%{T3}%{T-}
-ws-icon-1 = browser;
-ws-icon-2 = mail;
-ws-icon-3 = ica;
-ws-icon-4 = appearance;
-ws-icon-5 = font;
-ws-icon-6 = writer;
-ws-icon-7 = calc;
-ws-icon-8 = thunar;
-ws-icon-9 = gimp;
-ws-icon-10 = cmus;
-ws-icon-11 = urxvt;%{T3}%{T-}
+ws-icon-1 = browser;%{T3}%{T-}
+ws-icon-2 = mail;%{T3}%{T-}
+ws-icon-3 = ica;%{T3}%{T-}
+ws-icon-4 = appearance;%{T3}%{T-}
+ws-icon-5 = font;%{T3}%{T-}
+ws-icon-6 = writer;%{T3}%{T-}
+ws-icon-7 = calc;%{T3}%{T-}
+ws-icon-8 = thunar;%{T3}%{T-}
+ws-icon-9 = gimp;%{T3}%{T-}
+ws-icon-10 = tor;%{T3}%{T-}
+ws-icon-11 = urxvt;%{T3}%{T-}
 ws-icon-12 = firefox;%{T3}%{T-}
-ws-icon-13 = music;
-ws-icon-14 = main;
+ws-icon-13 = music;%{T3}%{T-}
+;ws-icon-14 = main;%{T3}%{T-}
+ws-icon-14 = main;%{T3}%{T-}
+ws-icon-15 = atom;%{T3}%{T-}
 
 ws-icon-default = 
 
 format = <label-state>
 format-padding = 0
-format-background = ${colors.background}
 
 ; Only show workspaces on the same output as the bar
 label-mode = %mode%
 label-mode-padding = 1
 
 ; focused = Active workspace on focused monitor
-label-focused = %{T4}%index%: %icon%%{T-}
-label-focused-foreground = ${colors.accent-02}
-label-focused-background = ${colors.background}
-label-focused-padding = 1
+label-focused = %index%: %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.yellow}
+label-focused-padding = 2
 label-focused-underline = ${colors.accent-01}
 
 ; unfocused = Inactive workspace on any monitor
@@ -256,7 +250,7 @@ label-urgent-padding = 1
 ;label-separator = 
 label-separator = " "
 label-separator-background = ${colors.background}
-label-separator-padding = 0
+label-separator-padding = 1
 
 [module/cpu]
 type = internal/cpu
@@ -299,6 +293,24 @@ label-connected = %local_ip%
 
 format-disconnected =
 
+[module/datetime]
+type = internal/date
+interval = 30
+
+date = 
+time = %H:%M
+
+date-alt = "%d.%m.%Y"
+time-alt = %H:%M
+
+format-prefix = 
+
+format-foreground = ${colors.green}
+
+label = %{T4}%date% %time%%{T-}
+label-padding = 1
+
+
 [module/date]
 type = internal/date
 interval = 99
@@ -306,14 +318,8 @@ interval = 99
 date = "%d.%m.%Y"
 
 format-prefix = 
-format-prefix-foreground = ${self.format-foreground}
-;format-prefix = %{T5}%{T-}
-;format-prefix-foreground = ${self.label-background}
-;format-prefix-background = ${colors.background}
 
-format-padding = 0
 format-foreground = ${colors.green}
-format-background = ${colors.background}
 
 label = %{T4}%date%%{T-}
 label-padding = 1
@@ -325,18 +331,10 @@ interval = 5
 time = %H:%M
 
 format-prefix = 
-;format-prefix = %{T5}%{T-}
-;format-prefix-foreground = ${self.label-background}
-;format-prefix-background = ${module/date.label-background}
-;format-prefix-margin = 0
-;format-prefix-padding = 0
 
 format-foreground = ${colors.yellow}
-format-background = ${colors.background}
-format-padding = 0
 
 label = %{T4}%time%%{T-}
-;label-background = ${colors.accent-01}
 label-padding = 1
 
 [module/pulseaudio]
@@ -344,22 +342,14 @@ type = internal/pulseaudio
 use-ui-max = false
 
 format-volume-prefix = ""
-format-volume-prefix-foreground = ${self.format-volume-foreground}
-format-volume-prefix-background = ${colors.background}
 
 format-volume = <label-volume>
 format-volume-foreground = ${colors.blue}
-format-volume-background = ${colors.background}
-format-volume-padding = 0
-
-format-muted-background = ${colors.background}
-format-muted-padding = 0
 
 label-volume = %percentage%%
 label-volume-padding = 1
 
 label-muted =  
-label-muted-foreground = ${colors.light-gray}
 label-muted-padding = 1
 
 ramp-volume-0 = 
@@ -394,10 +384,8 @@ format-volume-prefix-background = ${colors.background}
 
 format-volume = <label-volume>
 format-volume-background = ${colors.background}
-format-volume-padding = 0
 
 format-muted-background = ${colors.background}
-format-muted-padding = 0
 
 label-volume = %percentage%%
 label-volume-padding = 1
@@ -430,23 +418,18 @@ type = custom/menu
 
 expand-right = true
 
-format-padding= 0
-format-foreground = ${colors.black}
-format-background = ${colors.accent-01}
+format-padding = 0
+format-foreground = ${colors.white}
+format-background = ${colors.background}
 
-format-suffix = %{T5}%{T-}
-format-suffix-foreground = ${self.format-background}
-format-suffix-background = ${colors.background}
-
-label-open = %{T3}%{T-}
+label-open = " %{T5}%{T-} "
 label-open-padding = 1
 
-label-close = 
+label-close = " %{T3}%{T-} "
 label-close-padding = 1
 
-label-separator = 
-label-seperator-background = ${self.format-background}
-label-seperator-foreground = ${self.format-foreground}
+label-separator = :
+label-separator-padding = 1
 
 menu-0-0-padding = 1
 menu-0-1-padding = 1
@@ -461,24 +444,24 @@ menu-2-1-padding = 1
 menu-3-0-padding = 1
 menu-3-1-padding = 1
 
-menu-0-0 = reboot
+menu-0-0 = " %{T3}%{T-} "
 menu-0-0-exec = menu-open-1
-menu-0-1 = shutdown
+menu-0-1 = " %{T3}襤%{T-} "
 menu-0-1-exec = menu-open-2
-menu-0-2 = logout
+menu-0-2 = " %{T3}%{T-} "
 menu-0-2-exec = menu-open-3
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
+menu-1-1 = " %{T3}%{T-} "
 menu-1-1-exec = reboot
 
-menu-2-0 = shutdown
+menu-2-0 = " %{T3}襤%{T-} "
 menu-2-0-exec = shutdown now
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-menu-3-0 = logout
+menu-3-0 =" %{T3}%{T-} "
 menu-3-0-exec = i3-msg exit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
@@ -573,14 +556,11 @@ content-padding = 0
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
 compositing-border = over
-;pseudo-transparency = false
 
 format-padding = 2
-format-background = ${colors.background-transparent}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 [global/wm]
 #margin-top = 5
