@@ -1,3 +1,5 @@
+;;;; Color settings
+
 [colors]
 background = ${self.background-color}
 ;background = ${self.background-transparent}
@@ -11,25 +13,6 @@ accent-02 = ${self.yellow}
 separator = ${self.gray}
 module-background-01 = ${self.background-color-2}
 
-; onehalf dark
-;blue = #61AFEF
-;yellow = #E5C07B
-;red = #E06C75
-;green = #98C379
-;white = #DCDFE4
-;gray = #4a4e56
-;light-gray = #a4a7ae
-
-; everforest
-;cyan = #83c092
-;yellow = #dbbc7f
-;red = #e67e80
-;green = #a7c080
-;white = #d3c6aa
-;gray = #4a4e56
-;light-gray = #a4a7ae
-;background-color = #282c34
-
 ; sonokai andromeda
 black = #181a1c
 white = #e1e3e4
@@ -40,21 +23,29 @@ green = #9ed06c
 blue = #6dcae8
 purple = #bb97ee
 gray = #7e8294
-;light-gray = #2c2e34
+light-gray = #2c2e34
 background-color = #2b2d3a
 background-color-1 = #333648
 background-color-2 = #3f445b
 background-color-3 = #181819
 
+;;;; Bar settings
+
 [bar/notebook_bar]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 32 
-bottom = true
+bottom = false
 fixed-center = true
+
+line-size = 3
 
 background = ${colors.background}
 foreground = ${colors.foreground}
+
+border-size = 8
+border-color = ${colors.background-transparent}
+
+radius = 5
 
 padding-left = 0
 padding-right = 0
@@ -62,17 +53,17 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Roboto Mono:style=Regular:size=8;+3"
+font-0 = "mononoki Nerd Font Mono:style=Bold:size=9;+3"
 font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
-font-2 = "MesloLGS NF:style=Regular:size=14;+4"
-font-3 = "Roboto Mono:style=Bold:size=8;+3"
-font-4 = "MesloLGS NF:style=Regular:size=40"
+font-2 = "mononoki Nerd Font Mono:style=Regular:size=16;+4"
+font-3 = "mononoki Nerd Font:style=Bold:size=9;+3"
+font-4 = "mononoki Nerd Font Mono:style=Regular:size=24;+5"
 
-modules-left = powermenu s i3 
-modules-center = 
-modules-right = pulseaudio s battery s backlight s wifi s date s time
+modules-left = powermenu  
+modules-center = i3
+modules-right = pulseaudio backlight battery  wifi datetime
 
-;wm-restack = i3
+tray-position = none
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -83,7 +74,6 @@ cursor-scroll = ns-resize
 enable-ipc = true
 
 [bar/pc_bar]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 30 
 bottom = true
@@ -104,13 +94,11 @@ font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
 font-2 = "mononoki Nerd Font Mono:style=Regular:size=16;+4"
 font-3 = "mononoki Nerd Font:style=Bold:size=9;+3"
 font-4 = "mononoki Nerd Font Mono:style=Regular:size=24;+5"
-;font-4 = "MesloLGS NF:style=Regular:size=40"
 
 modules-left = powermenu
 modules-center = i3
 modules-right = pulseaudio filesystem datetime
 
-;wm-restack = i3
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -120,6 +108,36 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
+;;;; Module settings
+
+[module/alsa]
+type = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headhphone-soundcard = default
+
+master-mixer = Master
+
+mapped = true
+interval = 5
+
+format-volume-prefix = 
+format-volume-prefix-foreground = ${colors.accent-02}
+format-volume-prefix-background = ${colors.background}
+
+format-volume = <label-volume>
+format-volume-background = ${colors.background}
+
+format-muted-background = ${colors.background}
+
+label-volume = %percentage%%
+label-volume-padding = 1
+
+label-muted =  
+label-muted-foreground = ${colors.light-gray}
+label-muted-padding = 1
+
 [module/backlight]
 type = internal/backlight
 card = amdgpu_bl0
@@ -127,12 +145,10 @@ enable-scroll = true
 
 format = <label>
 
-format-prefix =  
-format-prefix-foreground = ${self.format-foreground}
+format-prefix = %{T3}%{T-} 
 
 format-background = ${colors.background}
 format-foreground = ${colors.yellow}
-format-padding = 0
 
 label = %percentage%%
 label-padding = 1
@@ -141,32 +157,106 @@ label-padding = 1
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 90
+full-at = 99
+low-at = 15
+poll-interval = 5
 
-format-charging = <label-charging>
-format-charging-background = ${colors.background}
-format-charging-padding = 0
+format-charging = <animation-charging><label-charging>
+format-charging-foreground = ${colors.purple}
 
-format-discharging-prefix =   
-format-discharging-prefix-foreground = ${self.format-discharging-foreground}
+format-discharging = <ramp-capacity><label-discharging>
+format-discharging-foreground = ${colors.purple}
 
-format-discharging = <label-discharging>
-format-discharging-foreground = ${colors.green}
-format-discharging-background = ${colors.background}
-format-discharging-padding = 0
-
+format-full-prefix = %{T3}%{T-}
 format-full = <label-full>
-format-full-background = ${colors.background}
-format-full-padding = 0
+format-full-foreground = ${colors.purple}
+
+format-low-prefix = %{T3}%{T-}
+format-low = <label-low>
+format-low-foreground = ${colors.red}
 
 label-discharging = %percentage%%
 label-discharging-padding = 1
 
-label-charging =  %percentage%%
+label-charging = %percentage%%
 label-charging-padding = 1
 
-label-full = %percentage%
+label-full = %percenage%
 label-full-padding = 1
+
+label-low = %percentage%
+label-low-padding = 1
+
+ramp-capacity-0 = %{T3}%{T-}
+ramp-capacity-1 = %{T3}%{T-}
+ramp-capacity-2 = %{T3}%{T-}
+ramp-capacity-3 = %{T3}%{T-}
+ramp-capacity-4 = %{T3}%{T-}
+
+animation-charging-0 = %{T3}%{T-}
+animation-charging-1 = %{T3}%{T-}
+animation-charging-2 = %{T3}%{T-}
+animation-charging-3 = %{T3}%{T-}
+animation-charging-4 = %{T3}%{T-}
+animation-charging-framerate = 750
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format-prefix = 
+
+format-padding = 0
+format-foreground = ${colors.yellow}
+format-background = ${colors.background}
+
+label = %percentage:2%%
+label-padding = 1
+
+[module/eth]
+type = internal/network
+interface = enp0s3
+interval = 3.0
+
+format-connected-prefix = 
+format-connected-prefix-foreground = ${colors.light-gray}
+
+format-connected = <label-connected>
+format-connected-padding = 0
+
+label-connected = %local_ip%
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 99
+
+date = "%d.%m.%Y"
+
+format-prefix = 
+
+format-foreground = ${colors.green}
+
+label = %{T4}%date%%{T-}
+label-padding = 1
+
+[module/datetime]
+type = internal/date
+interval = 30
+
+date = 
+time = %H:%M
+
+date-alt = "%d.%m.%Y"
+time-alt = %H:%M
+
+format-prefix = 
+
+format-foreground = ${colors.green}
+
+label = %{T4}%date% %time%%{T-}
+label-padding = 1
 
 [module/filesystem]
 type = internal/fs
@@ -226,44 +316,25 @@ format-padding = 0
 label-mode = %mode%
 label-mode-padding = 1
 
-; focused = Active workspace on focused monitor
 label-focused = %index%: %icon%
-label-focused-foreground = ${colors.black}
-label-focused-background = ${colors.yellow}
+label-focused-foreground = ${colors.green}
+;label-focused-background = ${colors.green}
 label-focused-padding = 2
-label-focused-underline = ${colors.accent-01}
+label-focused-underline = ${colors.green}
 
-; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%: %icon%
 label-unfocused-padding = 1
 label-unfocused-background = ${colors.background}
 
-; visible = Active workspace on unfocused monitor
 label-visible = %index%: %name%
 label-visible-padding = 0
 
-; urgent = Workspace with urgency hint set
 label-urgent = %{67e89}%index%:%{F-} %name%
 label-urgent-background = ${colors.background}
 label-urgent-padding = 1
 
-;label-separator = 
 label-separator = " "
-label-separator-background = ${colors.background}
 label-separator-padding = 1
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-
-format-prefix = 
-
-format-padding = 0
-format-foreground = ${colors.yellow}
-format-background = ${colors.background}
-
-label = %percentage:2%%
-label-padding = 1
 
 [module/memory]
 type = internal/memory
@@ -277,141 +348,6 @@ format-background = ${colors.background}
 
 label = %percentage_used%%
 label-padding = 1
-
-[module/eth]
-type = internal/network
-interface = enp0s3
-interval = 3.0
-
-format-connected-prefix = 
-format-connected-prefix-foreground = ${colors.light-gray}
-
-format-connected = <label-connected>
-format-connected-padding = 0
-
-label-connected = %local_ip%
-
-format-disconnected =
-
-[module/datetime]
-type = internal/date
-interval = 30
-
-date = 
-time = %H:%M
-
-date-alt = "%d.%m.%Y"
-time-alt = %H:%M
-
-format-prefix = 
-
-format-foreground = ${colors.green}
-
-label = %{T4}%date% %time%%{T-}
-label-padding = 1
-
-
-[module/date]
-type = internal/date
-interval = 99
-
-date = "%d.%m.%Y"
-
-format-prefix = 
-
-format-foreground = ${colors.green}
-
-label = %{T4}%date%%{T-}
-label-padding = 1
-
-[module/time]
-type = internal/date
-interval = 5
-
-time = %H:%M
-
-format-prefix = 
-
-format-foreground = ${colors.yellow}
-
-label = %{T4}%time%%{T-}
-label-padding = 1
-
-[module/pulseaudio]
-type = internal/pulseaudio
-use-ui-max = false
-
-format-volume-prefix = ""
-
-format-volume = <label-volume>
-format-volume-foreground = ${colors.blue}
-
-label-volume = %percentage%%
-label-volume-padding = 1
-
-label-muted =  
-label-muted-padding = 1
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-foreground = ${colors.red}
-ramp-volume-padding = 0
-
-bar-volume-width = 10
-bar-volume-indicator = |
-bar-volume-indicator-foreground = ${colors.accent-02}
-bar-volume-fill = -
-bar-volume-empty = -
-
-click-right = pavucontrol
-
-[module/alsa]
-type = internal/alsa
-
-master-soundcard = default
-speaker-soundcard = default
-headhphone-soundcard = default
-
-master-mixer = Master
-
-mapped = true
-interval = 5
-
-format-volume-prefix = 
-format-volume-prefix-foreground = ${colors.accent-02}
-format-volume-prefix-background = ${colors.background}
-
-format-volume = <label-volume>
-format-volume-background = ${colors.background}
-
-format-muted-background = ${colors.background}
-
-label-volume = %percentage%%
-label-volume-padding = 1
-
-label-muted =  
-label-muted-foreground = ${colors.light-gray}
-label-muted-padding = 1
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = î
-ramp-1 = î
-ramp-2 = î
-ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/menu
@@ -466,18 +402,77 @@ menu-3-0-exec = i3-msg exit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
 
+[module/pulseaudio]
+type = internal/pulseaudio
+use-ui-max = false
+
+format-volume-prefix = ""
+
+format-volume = <label-volume>
+format-volume-foreground = ${colors.blue}
+
+label-volume = %percentage%%
+label-volume-padding = 1
+
+label-muted =  
+label-muted-padding = 1
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.red}
+ramp-volume-padding = 0
+
+bar-volume-width = 10
+bar-volume-indicator = |
+bar-volume-indicator-foreground = ${colors.accent-02}
+bar-volume-fill = -
+bar-volume-empty = -
+
+click-right = pavucontrol
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = î
+ramp-1 = î
+ramp-2 = î
+ramp-foreground = ${colors.foreground-alt}
+
+[module/time]
+type = internal/date
+interval = 5
+
+time = %H:%M
+
+format-prefix = 
+
+format-foreground = ${colors.yellow}
+
+label = %{T4}%time%%{T-}
+label-padding = 1
+
 [module/wifi]
 type = internal/network
 interface = wlan0
 
 format-connected-prefix = 
 format-connected-prefix-foreground = ${self.format-connected-foreground}
-format-connected-prefix-padding = 0
 
 format-connected = <label-connected>
 format-connected-background = ${colors.background}
 format-connected-foreground = ${colors.orange}
-format-connected-padding = 0
 
 format-disconnected = <label-disconnected>
 format-disconnected-background = ${colors.background}
@@ -486,6 +481,8 @@ label-connected = %essid%
 label-connected-padding = 1
 
 label-disconnected = not connected
+
+;;;; Custom modules
 
 [module/polyplayerctl]
 type = custom/script
@@ -554,6 +551,8 @@ content-background = ${colors.background-transparent}
 content-margin = 0
 content-padding = 0
 
+;;;; Global settings
+
 [settings]
 screenchange-reload = true
 compositing-border = over
@@ -563,7 +562,7 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 [global/wm]
-#margin-top = 5
-#margin-bottom = 5
+;margin-top = 5
+;margin-bottom = 5
 
 ; vim:ft=dosini

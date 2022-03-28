@@ -13,15 +13,14 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'sainnhe/sonokai'
 Plug 'tidalcycles/vim-tidal'
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'vim-airline/vim-airline'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
-Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'mcchrish/nnn.vim'
+Plug 'suzanje/foxdot-nvim'
 
 call plug#end()
 
@@ -94,6 +93,9 @@ nnoremap <C-N> :NnnExplorer<CR>
 " navigate tabs
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+
+" Send line to FoxDot
+nnoremap <C-e> :StartFoxDot<CR>
 
 " when opening a new line an no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on
