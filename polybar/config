@@ -75,13 +75,20 @@ enable-ipc = true
 
 [bar/pc_bar]
 width = 100%
-height = 30 
-bottom = true
+height = 32 
+bottom = false
 fixed-center = true
+
+line-size = 3
 
 ;background = ${colors.background-tramsparent}
 background = ${colors.background}
 foreground = ${colors.foreground}
+
+border-size = 10
+border-color = ${colors.background-transparent}
+
+radius = 5
 
 padding-left = 0
 padding-right = 0
@@ -90,12 +97,10 @@ module-margin-left = 0
 module-margin-right = 0
 
 font-0 = "mononoki Nerd Font Mono:style=Bold:size=9;+3"
-font-1 = "Material\-Design\-Iconic\-Font:style=Design-Iconic-Font:size=12;+4"
-font-2 = "mononoki Nerd Font Mono:style=Regular:size=16;+4"
-font-3 = "mononoki Nerd Font:style=Bold:size=9;+3"
-font-4 = "mononoki Nerd Font Mono:style=Regular:size=24;+5"
+font-1 = "mononoki Nerd Font Mono:style=Regular:size=16;+4"
+font-2 = "mononoki Nerd Font Mono:style=Regular:size=24;+5"
 
-modules-left = powermenu
+modules-left = powermenu polyplayerctl 
 modules-center = i3
 modules-right = pulseaudio filesystem datetime
 
@@ -108,6 +113,41 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
+[bar/pc_bar_bottom]
+width = 10%
+height = 32 
+bottom = true
+fixed-center = true
+
+line-size = 3
+
+;background = ${colors.background-tramsparent}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 10
+border-color = ${colors.background-transparent}
+
+radius = 5
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = "mononoki Nerd Font Mono:style=Bold:size=9;+3"
+font-1 = "mononoki Nerd Font Mono:style=Regular:size=16;+4"
+font-2 = "mononoki Nerd Font Mono:style=Regular:size=24;+5"
+
+modules-left = polyplayerctl 
+modules-center = 
+modules-right = 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
 ;;;; Module settings
 
 [module/alsa]
@@ -145,7 +185,7 @@ enable-scroll = true
 
 format = <label>
 
-format-prefix = %{T3}%{T-} 
+format-prefix = %{T2}%{T-} 
 
 format-background = ${colors.background}
 format-foreground = ${colors.yellow}
@@ -167,11 +207,11 @@ format-charging-foreground = ${colors.purple}
 format-discharging = <ramp-capacity><label-discharging>
 format-discharging-foreground = ${colors.purple}
 
-format-full-prefix = %{T3}%{T-}
+format-full-prefix = %{T2}%{T-}
 format-full = <label-full>
 format-full-foreground = ${colors.purple}
 
-format-low-prefix = %{T3}%{T-}
+format-low-prefix = %{T2}%{T-}
 format-low = <label-low>
 format-low-foreground = ${colors.red}
 
@@ -187,17 +227,17 @@ label-full-padding = 1
 label-low = %percentage%
 label-low-padding = 1
 
-ramp-capacity-0 = %{T3}%{T-}
-ramp-capacity-1 = %{T3}%{T-}
-ramp-capacity-2 = %{T3}%{T-}
-ramp-capacity-3 = %{T3}%{T-}
-ramp-capacity-4 = %{T3}%{T-}
+ramp-capacity-0 = %{T2}%{T-}
+ramp-capacity-1 = %{T2}%{T-}
+ramp-capacity-2 = %{T2}%{T-}
+ramp-capacity-3 = %{T2}%{T-}
+ramp-capacity-4 = %{T2}%{T-}
 
-animation-charging-0 = %{T3}%{T-}
-animation-charging-1 = %{T3}%{T-}
-animation-charging-2 = %{T3}%{T-}
-animation-charging-3 = %{T3}%{T-}
-animation-charging-4 = %{T3}%{T-}
+animation-charging-0 = %{T2}%{T-}
+animation-charging-1 = %{T2}%{T-}
+animation-charging-2 = %{T2}%{T-}
+animation-charging-3 = %{T2}%{T-}
+animation-charging-4 = %{T2}%{T-}
 animation-charging-framerate = 750
 
 [module/cpu]
@@ -249,13 +289,13 @@ date =
 time = %H:%M
 
 date-alt = "%d.%m.%Y"
-time-alt = %H:%M
+time-alt = "%H:%M"
 
-format-prefix = 
+format-prefix = %{T2}%{T-}
 
 format-foreground = ${colors.green}
 
-label = %{T4}%date% %time%%{T-}
+label = %date% %time%
 label-padding = 1
 
 [module/filesystem]
@@ -264,12 +304,12 @@ interval = 25
 
 mount-0 = /
 
-format-mounted-prefix = %{T4}/:%{T-}
+format-mounted-prefix = %{T1}/:%{T-}
 
 format-mounted = <label-mounted>
 format-mounted-foreground = ${colors.yellow}
 
-format-unmounted-prefix = %{T4}/:%{T-} 
+format-unmounted-prefix = %{T1}/:%{T-} 
 
 format-unmounted = <label-unmounted>
 format-unmounted-foreground = ${colors.purple}
@@ -289,25 +329,25 @@ enable-scroll = true
 wrapping-scroll = false
 fuzzy-match = true
 
-ws-icon-0 = term;%{T3}%{T-}
-ws-icon-1 = browser;%{T3}%{T-}
-ws-icon-2 = mail;%{T3}%{T-}
-ws-icon-3 = ica;%{T3}%{T-}
-ws-icon-4 = appearance;%{T3}%{T-}
-ws-icon-5 = font;%{T3}%{T-}
-ws-icon-6 = writer;%{T3}%{T-}
-ws-icon-7 = calc;%{T3}%{T-}
-ws-icon-8 = thunar;%{T3}%{T-}
-ws-icon-9 = gimp;%{T3}%{T-}
-ws-icon-10 = tor;%{T3}%{T-}
-ws-icon-11 = urxvt;%{T3}%{T-}
-ws-icon-12 = firefox;%{T3}%{T-}
-ws-icon-13 = music;%{T3}%{T-}
-;ws-icon-14 = main;%{T3}%{T-}
-ws-icon-14 = main;%{T3}%{T-}
-ws-icon-15 = atom;%{T3}%{T-}
+ws-icon-0 = term;%{T2}%{T-}
+ws-icon-1 = browser;%{T2}%{T-}
+ws-icon-2 = mail;%{T2}%{T-}
+ws-icon-3 = ica;%{T2}%{T-}
+ws-icon-4 = appearance;%{T2}%{T-}
+ws-icon-5 = font;%{T2}%{T-}
+ws-icon-6 = writer;%{T2}%{T-}
+ws-icon-7 = calc;%{T2}%{T-}
+ws-icon-8 = thunar;%{T2}%{T-}
+ws-icon-9 = gimp;%{T2}%{T-}
+ws-icon-10 = tor;%{T2}%{T-}
+ws-icon-11 = urxvt;%{T2}%{T-}
+ws-icon-12 = firefox;%{T2}%{T-}
+ws-icon-13 = music;%{T2}%{T-}
+;ws-icon-14 = main;%{T2}%{T-}
+ws-icon-14 = main;%{T2}%{T-}
+ws-icon-15 = atom;%{T2}%{T-}
 
-ws-icon-default = 
+ws-icon-default = %{T2}%{T-}
 
 format = <label-state>
 format-padding = 0
@@ -317,10 +357,10 @@ label-mode = %mode%
 label-mode-padding = 1
 
 label-focused = %index%: %icon%
-label-focused-foreground = ${colors.green}
+label-focused-foreground = ${colors.purple}
 ;label-focused-background = ${colors.green}
-label-focused-padding = 2
-label-focused-underline = ${colors.green}
+label-focused-padding = 1
+label-focused-underline = ${colors.purple}
 
 label-unfocused = %index%: %icon%
 label-unfocused-padding = 1
@@ -358,10 +398,10 @@ format-padding = 0
 format-foreground = ${colors.white}
 format-background = ${colors.background}
 
-label-open = " %{T5}%{T-} "
+label-open = " %{T3}%{T-} "
 label-open-padding = 1
 
-label-close = " %{T3}%{T-} "
+label-close = " %{T2}%{T-} "
 label-close-padding = 1
 
 label-separator = :
@@ -380,24 +420,24 @@ menu-2-1-padding = 1
 menu-3-0-padding = 1
 menu-3-1-padding = 1
 
-menu-0-0 = " %{T3}%{T-} "
+menu-0-0 = " %{T2}%{T-} "
 menu-0-0-exec = menu-open-1
-menu-0-1 = " %{T3}襤%{T-} "
+menu-0-1 = " %{T2}襤%{T-} "
 menu-0-1-exec = menu-open-2
-menu-0-2 = " %{T3}%{T-} "
+menu-0-2 = " %{T2}%{T-} "
 menu-0-2-exec = menu-open-3
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
-menu-1-1 = " %{T3}%{T-} "
+menu-1-1 = " %{T2}%{T-} "
 menu-1-1-exec = reboot
 
-menu-2-0 = " %{T3}襤%{T-} "
+menu-2-0 = " %{T2}襤%{T-} "
 menu-2-0-exec = shutdown now
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-menu-3-0 =" %{T3}%{T-} "
+menu-3-0 =" %{T2}%{T-} "
 menu-3-0-exec = i3-msg exit
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
@@ -406,7 +446,7 @@ menu-3-1-exec = menu-open-0
 type = internal/pulseaudio
 use-ui-max = false
 
-format-volume-prefix = ""
+format-volume-prefix = %{T2}墳%{T-}
 
 format-volume = <label-volume>
 format-volume-foreground = ${colors.blue}
@@ -414,7 +454,7 @@ format-volume-foreground = ${colors.blue}
 label-volume = %percentage%%
 label-volume-padding = 1
 
-label-muted =  
+label-muted =  %{T2}婢%{T-}
 label-muted-padding = 1
 
 ramp-volume-0 = 
@@ -489,10 +529,37 @@ type = custom/script
 exec = $HOME/.config/polybar/polyplayerctl.sh
 interval = 2
 
-format-prefix = " "
-format-prefix-foreground = ${colors.accent-02}
-format-background = ${colors.background}
+format-prefix = "%{T2}%{T-} "
+format-prefix-foreground = ${colors.purple}
 format-padding = 1
+
+[module/polyplayer-play]
+type = custom/ipc
+hook-0 = echo "%{T2}%{T-}"
+hook-1 = echo "%{T2}%{T-}"
+initial = 1
+
+format-padding = 1
+
+click-left = playerctl play-pause
+
+[module/polyplayer-next]
+type = custom/script
+exec = echo "%{T2}%{T-}"
+
+format = <label>
+format-padding = 1
+
+click-left = playerctl next
+
+[module/polyplayer-previous]
+type = custom/script
+exec = echo "%{T2}%{T-}"
+
+format = <label>
+format-padding = 1
+
+click-left = playerctl previous
 
 [module/polypamac]
 type = custom/script
