@@ -94,10 +94,16 @@ nnoremap <C-N> :NnnExplorer<CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
-" Send line to FoxDot
-nnoremap <C-e> :StartFoxDot<CR>
+" Exit Terminal Mode with Escape
+tnoremap <Esc> <C-\><C-n>
 
-" when opening a new line an no filetype-specific indenting is enabled, keep
+" FoxDot controls
+nnoremap <C-e> :StartFoxDot<CR>
+nnoremap <C-L> :FDRunLine<CR>
+nnoremap <C-B> :FDRunBlock<CR>
+nnoremap <C-H> :FDClearClock<CR>
+
+"when opening a new line an no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on
 set autoindent
 
