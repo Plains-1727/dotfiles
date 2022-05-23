@@ -1,7 +1,7 @@
 * {
-    font: "Roboto-Regular 10";
+    font: "Cantarell 10";
     foreground: #e1e3e4;
-    background: #181a1c;
+    background: #2b2d3a;
     active-background: #6dcae8;
     urgent-background: #ff5555;
     selected-foreground : #4b565c;
@@ -14,10 +14,10 @@
 
 #window {
     background-color: @background;
-    border:           1;
-    border-radius: 0;
-    border-color: @bordercolor;
-    padding:          5;
+    border:         1;
+    border-radius:  0;
+    border-color:   @bordercolor;
+    padding:        5;
 }
 #mainbox {
     border:  0;

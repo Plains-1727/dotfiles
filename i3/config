@@ -18,10 +18,17 @@ exec ~/.fehbg
 exec --no-startup-id ~/bin/launch-polybar.sh
 
 # auto lock screen
-#exec --no-startup-id xautolock -time 10 -locker /home/jan/bin/lock.sh
+exec --no-startup-id xautolock -time 10 -locker /home/jan/bin/lock.sh
 
 # run perl script to dynamicaly change workspace names
 exec --no-startup-id ~/bin/i3-renameworkspaces.pl 
+
+# set keyboard layout
+exec --no-startup-id setxkbmap -layout de
+
+# enable touchpad tapping an natural scrolling
+exec --no-startup-id xinput set-prop "0X45 0X4C 0X41 0X4E 04F3:3092 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "0X45 0X4C 0X41 0X4E 04F3:3092 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # General
 
@@ -48,6 +55,8 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindcode $mod+40 exec "rofi -modi drun,run -show drun -font 'Roboto 8' -show-icons -icon-theme Flat-Remix-Blue-Dark" 
+
+#bindcode 133 exec "rofi -modi drun,run -show drun -font 'Roboto 8' -show-icons -icon-theme Flat-Remix-Blue-Dark" 
 
 # change focus
 bindsym $mod+h focus left
@@ -181,11 +190,11 @@ bindsym $mod+n workspace next
 bindsym $mod+b workspace prev
 
 # lock screen
-bindsym $mod+Control+l exec /home/jan/bin/lock.sh
+bindsym $mod+Control+l exec ~/bin/lock.sh
 
 # media control
-bindsym $mod+o exec ~/bin/volcontrol.sh up
-bindsym $mod+i exec ~/bin/volcontrol.sh down
+bindsym $mod+o exec "amixer -q sset Master 2%+"
+bindsym $mod+i exec "amixer -q sset Master 2%-"
 bindsym $mod+p exec "playerctl play-pause"
 
 # move to scratchpad
@@ -203,7 +212,6 @@ assign [class="*calc*"] $ws4
 # Style
 
 # class                 border  bground text    indicator child_border
-#client.focused          #4b565c #a7c080 #4b565c #4b565c   #a7c080
 client.focused          #4b565c #6dcae8 #4b565c #4b565c   #6dcae8
 client.unfocused        #4b565c #4b565c #d3c6aa #4b565c   #4b565c
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
@@ -217,6 +225,7 @@ for_window [class="QjackCtl"] floating enable
 for_window [class="libreoffice-calc"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Galculator"] floating enable
 
 # gaps
 gaps inner 20
