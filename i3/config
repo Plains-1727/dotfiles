@@ -3,8 +3,8 @@
 # Autostart
 
 # launch virtual box guest additions
-exec --no-startup-id VBoxClient --vmsvga
-exec --no-startup-id VBoxClient --clipboard
+#exec --no-startup-id VBoxClient --vmsvga
+#exec --no-startup-id VBoxClient --clipboard
 
 # start compositor for transparency effect
 exec --no-startup-id picom 
@@ -15,10 +15,11 @@ exec --no-startup-id picom
 exec ~/.fehbg
 
 # launch polybar
-exec --no-startup-id ~/bin/launch-polybar.sh
+#exec --no-startup-id ~/bin/launch-polybar.sh
+exec --no-startup-id polybar notebook_bar
 
 # auto lock screen
-exec --no-startup-id xautolock -time 10 -locker /home/jan/bin/lock.sh
+exec --no-startup-id xautolock -time 15 -corners 00-- -notify 30 -locker /home/jan/bin/lock.sh
 
 # run perl script to dynamicaly change workspace names
 exec --no-startup-id ~/bin/i3-renameworkspaces.pl 
@@ -205,9 +206,7 @@ bindsym $mod+minus scratchpad show
 #bindsym $mod+q exec kill
 
 # Assign Workspaces:
-assign [class="Firefox"] $ws2
-assign [class="writer"] $ws3
-assign [class="*calc*"] $ws4
+#assign [class="Firefox"] $ws2
 
 # Style
 
@@ -222,11 +221,20 @@ for_window [class=".*"] border pixel
 # Set some windows to be floating when spawned
 for_window [class="URxvt"] floating enable
 for_window [class="QjackCtl"] floating enable
-for_window [class="libreoffice-calc"] floating enable
+#for_window [class="libreoffice-calc"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Galculator"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="explorer.exe"] floating enable
 
 # gaps
 gaps inner 20
 #smart_borders on
+
+# Miscellaneous 
+
+mouse_warping none
+focus_follows_mouse no
+
+

@@ -81,7 +81,7 @@ Does the keyboard work now?
 
 Requires xorg-xinput
 
-setxkblayout -layout de
+setxkbmap -layout de
 
 # Install vim-plug
 
