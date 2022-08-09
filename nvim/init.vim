@@ -1,4 +1,5 @@
 set nocompatible
+set clipboard+=unnamedplus
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
@@ -13,14 +14,17 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'sainnhe/sonokai'
 Plug 'tidalcycles/vim-tidal'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'vim-airline/vim-airline'
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-highlightedyank'
 Plug 'liuchengxu/vim-clap'
 Plug 'mcchrish/nnn.vim'
 Plug 'suzanje/foxdot-nvim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -144,3 +148,55 @@ colorscheme sonokai
 
 " Tidal Cycles target
 let g:tidal_target = "terminal"
+
+" coc (code completion) config
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+nmap <F5> :CocCommand powershell.evaluateLine<CR>
+vmap <F5> :CocCommand powershell.evaluateSelection<CR>
+nmap <F8> :CocCommand powershell.execute<CR>
+
+" lualine config
+
+lua << END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+END
+
+
