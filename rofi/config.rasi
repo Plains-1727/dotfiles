@@ -1,8 +1,24 @@
+/* Sonokai
 * {
     font: "Cantarell 10";
     foreground: #e1e3e4;
     background: #2b2d3a;
     active-background: #6dcae8;
+    urgent-background: #ff5555;
+    selected-foreground : #4b565c;
+    selected-background: @active-background;
+    selected-urgent-background: @urgent-background;
+    selected-active-background: @active-background;
+    separatorcolor: #a7c080;
+    bordercolor: @active-background;
+}
+*/
+
+* {
+    font: "Cantarell 11";
+    foreground: #d3c6aa;
+    background: #2b3339;
+    active-background: #a7c080;
     urgent-background: #ff5555;
     selected-foreground : #4b565c;
     selected-background: @active-background;

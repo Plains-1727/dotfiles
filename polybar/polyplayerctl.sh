@@ -30,4 +30,9 @@ then
     artist=$(echo $artist | cut -c 1-$max_length)...
 fi
 
-echo "$artist - $title"
+if [ $artist_length -eq 0 ]
+then
+    echo "$title"
+else
+    echo "$artist - $title"
+fi

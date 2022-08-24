@@ -1,43 +1,51 @@
 #!/bin/bash
+resloution_primary_screen=$(xrandr | grep primary | grep -Eo "[0-9]{1,4}x[0-9]{1,4}\+[0-9]{1,4}")
+width=$(echo $resloution_primary_screen | grep -Eo "^[0-9]{1,4}")
+height=$(echo $resloution_primary_screen | grep -Po  "(?<=x)[0-9]{1,4}")
+offset=$(echo $resloution_primary_screen | grep -Po "(?<=\+)[0-9]{1,4}")
 
-HEIGHT=$(xwininfo -root | grep Height | grep -o -E '[0-9]+')
-WIDTH=$(xwininfo -root | grep Width | grep -o -E '[0-9]+')
-POSX=$(expr $WIDTH - 100)
-POSY=$(expr $HEIGHT - 100)
+time_pos=$(expr $offset + 100):$(expr $height - 100)
+ind_pos=$(expr $offset + 360):$(expr $height - 116)
+greeter_pos=$(expr $offset + 155):$(expr $height - 45)
 
-#WALLPAPER=$(cat .fehbg | awk -F "\'" '{print $2}' | xargs)
-WALLPAPER=/home/jan/Pictures/Wallpaper/blurred-red-moon.png
+wallpaper=/home/jan/Pictures/Wallpaper/dark-forest-blur-grayscale.png
 
+radius=20
+ring_width=4
+ring_color=00000000
+ringver_color=7fbbb3
+ringwrong_color=e67e80
+keyhl_color=dbbc7f
+fg_color=d3c6aa
 
 i3lock -e \
     --clock \
-    -i $WALLPAPER \
+    -i $wallpaper \
     -F \
     --force-clock \
-    --indicator \
-    --radius 20 \
-    --ring-width 4 \
-    --ring-color=e1e3e4 \
-    --keyhl-color=9ed06c \
+    --radius $radius \
+    --ring-width $ring_width \
+    --ring-color=$ring_color \
+    --keyhl-color=$keyhl_color \
     --inside-color=00000000 \
-    --time-color=ffffff \
-    --date-color=ffffff \
-    --greeter-color=ffffff \
+    --time-color=$fg_color \
+    --date-color=$fg_color \
+    --greeter-color=fg_color \
     --line-color=00000000 \
     --insidewrong-color=00000000 \
-    --ringver-color=bb97ee \
-    --ringwrong-color=fb617e \
+    --ringver-color=$ringver_color \
+    --ringwrong-color=$ringwrong_color \
     --insidever-color=00000000 \
     --separator-color=00000000 \
     --time-align 1 \
     --date-align 1 \
-    --time-pos=100:$POSY \
-    --ind-pos=360:$(expr $POSY - 15) \
-    --greeter-pos=155:$(expr $POSY + 55) \
+    --time-pos=$time_pos \
+    --ind-pos=$ind_pos \
+    --greeter-pos=$greeter_pos \
     --verif-text="" \
     --wrong-text="" \
     --noinput-text="" \
-    --greeter-text="Type to unlock..." \
+    --greeter-text="" \
     --time-size=50 \
     --date-size=20 \
     --greeter-size=15 \

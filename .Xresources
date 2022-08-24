@@ -1,8 +1,8 @@
 !! Colorscheme
 
 ! special
-*.foreground: #e1e3e4
-*.background: #2b2d3a
+*.foreground: #d3c6aa
+*.background: #2b3339
 *.cursorColor: #afbfbf
 
 ! black
@@ -10,28 +10,28 @@
 *.color8: #181a1c
 
 ! red
-*.color1: #fb617e
-*.color9: #fb617e
+*.color1: #e67e80
+*.color9: #e67e80
 
 ! green
-*.color2: #9ed06c
-*.color10: #9ed06c
+*.color2: #a7c080
+*.color10: #a7c080
 
 ! yellow
-*.color3: #edc763
-*.color11: #edc763
+*.color3: #dbbc7f
+*.color11: #dbbc7f
 
 ! blue
-*.color4: #6dcae8
-*.color12: #6dcae8
+*.color4: #7fbbb3
+*.color12: #7fbbb3
 
 ! magenta
-*.color5: #bb97ee
-*.color13: #bb97ee
+*.color5: #d699b6
+*.color13: #d699b6
 
 ! cyan
-*.color6: #f89860
-*.color14: #f89860
+*.color6: #e69875
+*.color14: #e69875
 
 ! white
 *.color7: #e1e3e4
@@ -43,13 +43,13 @@
 !URxvt.boldFont: xft:MesloLGS NF:style=Bold:size=9
 !URxvt.italicFont: xft:MesloLGS NF:style=Italic:size=9
 !URxvt.boldItalicfont: xft:MesloLGS NF:style=Bold Italic:size=9
-URxvt.font: xft:mononoki Nerd Font Mono:style=Regular:size=10,xft:Noto Color Emoji:style=Regular:size=10
-URxvt.boldFont: xft:mononoki Nerd Font Mono:style=Bold:size=10
-URxvt.italicFont: xft:mononoki Nerd Font Mono:style=Italic:size=10
-URxvt.boldItalicfont: xft:mononoki Nerd Font Mono:style=Bold Italic:size=10
+URxvt.font: xft:mononoki Nerd Font Mono:style=Regular:size=12,xft:Noto Color Emoji:style=Regular:size=10
+URxvt.boldFont: xft:mononoki Nerd Font Mono:style=Bold:size=12
+URxvt.italicFont: xft:mononoki Nerd Font Mono:style=Italic:size=12
+URxvt.boldItalicfont: xft:mononoki Nerd Font Mono:style=Bold Italic:size=12
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
-URxvt.geometry: 92x24
+URxvt.geometry: 92x32
 URxvt.internalBorder: 24
 URxvt.cursorBlink: true
 URxvt.cursorUnderline: false
@@ -74,7 +74,7 @@ URxvt.urlButton: 1
 
 !! transparancy
 URxvt*depth: 32
-URxvt*background: [88]#2b2d3a
+URxvt*background: [88]#2b3339
 
 !! Font settings
 Xft.dpi: 96

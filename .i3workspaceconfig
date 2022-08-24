@@ -6,6 +6,7 @@
         "chromium-browser": "chrome",
         "brave-browser": "brave",
         "tor browser": "tor",
+        "join": "zoom",
     },
     
     "instances": {
@@ -13,6 +14,8 @@
 
    "staticnames": {
         "1": "main",
+        "2": "browser",
+        "3": "work",
         "9": "music"
     }
 }

@@ -1,3 +1,9 @@
+#format = "[ ](bold blue) $all(blue)"
+#format = "[ ](bold green) $all(blue)"
+right_format = "$time"
+
+# ﬦ﯑
+
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
@@ -8,8 +14,9 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[ﲊ $duration]($style)\]'
 
 [character]
-success_symbol = "[](bold green) "
+success_symbol = "[](bold green) "
 error_symbol = "[](bold red) "
+# 
 
 [cobol]
 format = '\[[$symbol($version)]($style)\]'
@@ -25,6 +32,12 @@ format = '\[[$symbol($version)]($style)\]'
 
 [deno]
 format = '\[[$symbol($version)]($style)\]'
+
+[directory]
+format = "[{$path}]($style) [$read_only]($read_only_style)"
+style = "bold green"
+read_only = ""
+read_only_style = "red"
 
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
@@ -135,7 +148,10 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol$workspace]($style)\]'
 
 [time]
-format = '\[[$time]($style)\]'
+format = '[$time]($style)'
+style = "cyan"
+disabled = false
+time_format = "%T"
 
 [username]
 format = '\[[$user]($style)\]'
