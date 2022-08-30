@@ -3,7 +3,7 @@
 directory=$1
 
 if [[ -z $directory ]]; then
-    echo "No directory given"
+    echo "ERROR: No directory given."
     exit
 fi
 
@@ -24,6 +24,9 @@ if ! [[ -d $path ]]; then
     exit
 fi
 
+echo $path
+#exit
+
 echo -n "Artist: "
 read artist
 
@@ -35,7 +38,7 @@ read year
 
 for file in "$path"/*; do
     filename=$(basename "$file")
-    filename_no_ext=$(echo "$filename" | sed -e "s/\..*//" | sed -r "s/[^a-zA-Z]+//")
+    filename_no_ext=$(echo "$filename" | sed -e "s/\..*//" | sed -r "s/[^a-zA-Z]*//")
 
     echo "Filename: ${filename}"
 
@@ -58,13 +61,18 @@ for file in "$path"/*; do
     fi
 
     extension=$(echo $filename | grep -o "\..*")
-    new_filename="${track}-${filename_no_ext}${extension}"
+    new_filename="${track} - ${song}${extension}"
     new_path=$(echo $file | perl -p -e "s/([^\/]+$)/$new_filename/g")
 
-    echo -n "Do you want me to rename the file $filename to $new_filename? [y/N]: "
+    echo -n "Do you want me to rename the file '$filename' to '$new_filename'? [Y/n]: "
     read rename
 
-    if [ $rename = "y" ]; then
-        mv -i -v $file $new_path 
+    if [ $rename = "n" ]; then
+        echo "---"
+        continue
     fi
+    
+    mv -i -v "$file" "$new_path"
+
+    echo "---"
 done
