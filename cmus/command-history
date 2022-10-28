@@ -1,0 +1,89 @@
+save test
+set color_trackwin_album_fg=yellow
+set color_separator=green
+set color_separator=yellow
+set color_separator=orange
+set color_win_inactive_cur_sel_fg=green
+set color_win_cur_sel_bg=green
+set color_win_cur=green
+set color_titleline_bg=green
+set 
+set color_win_inactive_cur_sel_fg=magenta
+set color_trackwin_album_fg=blue
+set color_trackwin_album_fg=blu
+a Music
+set color_win_title_fg=blue
+set color_win_inactive_sel_fg=blue
+set color_win_fg=white
+add Music/
+clear
+refresh 
+add Music
+a Muic
+refresh M
+refresh
+reload
+relo
+rese
+remove
+live-f
+pl-create test
+pl-create
+bind -f common y player-prev
+add Music/Guild Wars 2/
+add .local/share/shellcaster/
+add .local
+add ./Music
+add ./Music/
+add ~/Music
+set color_win_cur_sel_bg=magenta
+set color_win_cur=magenta
+set color_win_cur=mageta
+set color_titleline_bg=magenta
+set color_statusline_bg=default
+set color_statusline_bg=defaut
+set color_statusline_bg=magenta
+set color_statusline_bg=purple
+colorscheme dracula
+colorscheme spotify
+colorscheme night
+colorscheme jellybeans
+colorscheme default
+colorscheme cyan
+colorscheme amazon
+set resume=true
+q
+w
+set color_win_inactive_cur_sel_bg=blue
+set color_win_inactive_sel_bg=blue
+set color_win_inactive_sel_bg=default
+set color_win_inactive_cur_sel_bg=default
+set color_win_inactive_cur_sel_fg=white
+set color_win_cur_sel_fg=white
+set color_win_cur_sel_fg=blue
+set color_win_cur_sel_fg=magenta
+set color_win_inactive_cur_sel_fg=yellow
+set color_win_inactive_cur_sel_fg=black
+set color_win_inactive_sel_bg=yellow
+set color_win_inactive_cur_sel_bg=yellow
+set color_statusline_bg=yellow
+set color_statusline_bg=blue
+set color_statusline_bg=cyan
+set color_statusline_bg=black
+set color_statusline_bg=white
+set color_win_title_fg=black
+set color_win_sel_fg=black
+set color_win_sel_fg=greay
+set color_win_sel_fg=gray
+set color_titleline_fg=black
+set color_titleline_fg=white
+set color_titleline_fg=blue
+set color_titleline_fg=yellow
+set color_titleline_fg=default
+set color_titleline_fg=foreground
+set color_win_title_bg=green
+set color_win_title_attr=d
+set color_win_sel_bg=green
+set color_win_dir=lightblue
+set color_win_dir=green
+set color_win_cur_sel_bg=blue

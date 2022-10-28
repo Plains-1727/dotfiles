@@ -14,6 +14,7 @@
 }
 */
 
+/* Everforest
 * {
     font: "Cantarell 11";
     foreground: #d3c6aa;
@@ -27,13 +28,28 @@
     separatorcolor: #a7c080;
     bordercolor: @active-background;
 }
+*/
+
+* {
+    font: "Cantarell 11";
+    foreground: #c5cdd9;
+    background: rgba(43, 45, 58, 0.8);
+    active-background: #a0c980;
+    urgent-background: #ff5555;
+    selected-foreground : #181a1c;
+    selected-background: @active-background;
+    selected-urgent-background: @urgent-background;
+    selected-active-background: @active-background;
+    separatorcolor: #a7c080;
+    bordercolor: @active-background;
+}
 
 #window {
     background-color: @background;
     border:         1;
     border-radius:  0;
     border-color:   @bordercolor;
-    padding:        5;
+    padding:        2;
 }
 #mainbox {
     border:  0;
@@ -51,13 +67,13 @@
     fixed-height: 0;
     border:       2px dash 0px 0px ;
     border-color: @bordercolor;
-    spacing:      2px ;
+    spacing:      0px ;
     scrollbar:    false;
     padding:      2px 0px 0px ;
 }
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 6px ;
 }
 #element.normal.normal {
     background-color: @background;
@@ -108,8 +124,6 @@
 #button.selected {
     background-color: @selected-background;
     text-color:       @foreground;
-}
-#inputbar {
     spacing:    0;
     text-color: @foreground;
     padding:    1px ;
@@ -226,7 +240,7 @@ configuration {
 /*	kb-mode-complete: "Control+l";*/
 /*	kb-row-left: "Control+Page_Up";*/
 /*	kb-row-right: "Control+Page_Down";*/
-	kb-row-up: "K,Up,Control+p,ISO_Left_Tab";
+/*      kb-row-up: "K,Up,Control+p,ISO_Left_Tab";*/
 	kb-row-down: "J,Down,Control+n";
 /*	kb-row-tab: "Tab";*/
 /*	kb-page-prev: "Page_Up";*/

@@ -149,7 +149,7 @@ let g:edge_style = 'neon'
 let g:edge_enable_italic = 1
 let g:edge_enable_italic_comment = 1
 
-colorscheme everforest
+colorscheme edge
 
 " Tidal Cycles target
 let g:tidal_target = "terminal"

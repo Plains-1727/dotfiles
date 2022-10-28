@@ -17,7 +17,7 @@ exec ~/.fehbg
 # launch polybar
 #exec --no-startup-id ~/bin/launch-polybar.sh
 exec --no-startup-id polybar bar_top
-exec --no-startup-id polybar bar_bottom
+#exec --no-startup-id polybar bar_bottom
 
 # auto lock screen
 exec --no-startup-id xautolock -time 15 -corners 00-- -notify 30 -locker /home/jan/bin/lock.sh
@@ -50,7 +50,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,7 +89,7 @@ bindsym $mod+Shift+Right move right
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -189,17 +189,21 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t exec thunar
 
 # switch workspace next and previous
-bindsym $mod+n workspace next
-bindsym $mod+b workspace prev
+bindsym $mod+tab workspace next
+bindsym $mod+shift+tab workspace prev
 
 # lock screen
 bindsym $mod+Control+l exec ~/bin/lock.sh
 #bindsym $mod+Control+l exec "env XSECURELOCK_SAVER=saver_mpv XSECURELOCK_SHOW_DATETIME=1 xsecurelock"
 
 # media control
-bindsym $mod+o exec "amixer -q sset Master 2%+"
-bindsym $mod+i exec "amixer -q sset Master 2%-"
-bindsym $mod+p exec "playerctl play-pause"
+bindsym $mod+o exec "~/bin/media-control.sh increase 5"
+bindsym $mod+i exec "~/bin/media-control.sh decrease 5"
+bindsym $mod+c exec "playerctl play-pause"
+bindsym $mod+v exec "playerctl stop"
+bindsym $mod+x exec "playerctl play"
+bindsym $mod+y exec "playerctl previous"
+bindsym $mod+b exec "playerctl next"
 
 # move to scratchpad
 bindsym $mod+shift+minus move scratchpad
@@ -220,12 +224,13 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 
 # disable window titlebars
 for_window [class=".*"] border pixel
+default_border pixel 2
 
 # Set some windows to be floating when spawned
 #for_window [class="URxvt"] floating enable
 for_window [class="QjackCtl"] floating enable
 #for_window [class="libreoffice-calc"] floating enable
-for_window [class="Thunar"] floating enable
+#for_window [class="Thunar"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Lxappearance"] floating enable
@@ -241,5 +246,3 @@ gaps inner 20
 # Miscellaneous 
 mouse_warping none
 focus_follows_mouse no
-
-

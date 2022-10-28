@@ -1,8 +1,10 @@
 #format = "[ ](bold blue) $all(blue)"
 #format = "[ ](bold green) $all(blue)"
+#format = " "$all
 right_format = "$time"
 
 # ﬦ﯑
+# 
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
@@ -11,12 +13,14 @@ format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [cmd_duration]
-format = '\[[ﲊ $duration]($style)\]'
+format = '[\[[ $duration](yellow bold)\]]($style)'
+style = "green purple"
+#ﲊ
 
 [character]
-success_symbol = "[](bold green) "
-error_symbol = "[](bold red) "
-# 
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+# 
 
 [cobol]
 format = '\[[$symbol($version)]($style)\]'
@@ -34,8 +38,8 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [directory]
-format = "[{$path}]($style) [$read_only]($read_only_style)"
-style = "bold green"
+format = '[\[[$path](blue)[$read_only]($read_only_style)\]](green)'
+style = "blue"
 read_only = ""
 read_only_style = "red"
 
@@ -58,7 +62,8 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
 
 [git_branch]
-format = '\[[$symbol$branch]($style)\]'
+format = '[{](green bold) [$symbol$branch]($style) [}](green bold)'
+style = "bold green"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
@@ -76,7 +81,7 @@ format = '\[[$symbol$branch]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [jobs]
-format = "+ "
+format = "[+ ](blue)"
 
 [julia]
 format = '\[[$symbol($version)]($style)\]'
@@ -124,7 +129,8 @@ format = '\[[$symbol$stack]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [python]
-format = '\[[ ${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+format = '[\[[ ${pyenv_prefix}(${version})(\($virtualenv\))](bold yellow)\]]($style)'
+style = "bold purple"
 
 [red]
 format = '\[[$symbol($version)]($style)\]'
@@ -149,7 +155,7 @@ format = '\[[$symbol$workspace]($style)\]'
 
 [time]
 format = '[$time]($style)'
-style = "cyan"
+style = "blue"
 disabled = false
 time_format = "%T"
 

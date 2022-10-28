@@ -25,6 +25,10 @@ then
     title=$(echo $title | cut -c 1-$max_length)...
 fi
 
+if [ $title_length -eq 0 ]; then
+    title="no title information"
+fi
+
 if [ $artist_length -gt $max_length ]
 then
     artist=$(echo $artist | cut -c 1-$max_length)...
