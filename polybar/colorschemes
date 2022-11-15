@@ -31,4 +31,11 @@ blue = #6dcae8
 purple = #bb97ee
 grey = #7e8294
 
+# Arc-Darker
+dark-grey = #303642
+grey = #414A59
+blue = #5294E2
+red = #CC575D
+white = #F5F6F7
+
 # vim = ft=dosini

@@ -8,15 +8,16 @@ time_pos=$(expr $offset + 100):$(expr $height - 100)
 ind_pos=$(expr $offset + 360):$(expr $height - 116)
 greeter_pos=$(expr $offset + 155):$(expr $height - 45)
 
-wallpaper=/home/jan/Pictures/Wallpaper/dark-forest-blur-grayscale.png
+wallpaper=/home/jan/Pictures/Wallpaper/walchensee-blur.jpg
 
 radius=20
 ring_width=4
 ring_color=00000000
-ringver_color=7fbbb3
-ringwrong_color=e67e80
-keyhl_color=dbbc7f
-fg_color=d3c6aa
+ringver_color=6cb6eb
+ringwrong_color=ec7279
+keyhl_color=d38aea
+fg_color=c5cdd9
+lock_icon=
 
 i3lock -e \
     --clock \
@@ -45,7 +46,7 @@ i3lock -e \
     --verif-text="" \
     --wrong-text="" \
     --noinput-text="" \
-    --greeter-text="" \
+    --greeter-text=$lock_icon \
     --time-size=50 \
     --date-size=20 \
-    --greeter-size=15 \
+    --greeter-size=15

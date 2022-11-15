@@ -18,9 +18,11 @@ paths=(
     ".config/Thunar"
     ".config/ranger"
     ".config/starship.toml"
+    ".config/cmus"
+    ".config/dunst"
     "bin"
     "Documents/knowledge"
-    ".fonts"
+    ".local/share/fonts"
 )
 
 for path in "${paths[@]}"
