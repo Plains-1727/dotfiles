@@ -1,173 +1,68 @@
-#format = "[ ](bold blue) $all(blue)"
-#format = "[ ](bold green) $all(blue)"
-#format = " "$all
-right_format = "$time"
-
-# ﬦ﯑
-# 
-
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
-
-[cmd_duration]
-format = '[\[[ $duration](yellow bold)\]]($style)'
-style = "green purple"
-#ﲊ
-
-[character]
-success_symbol = "[](bold green)"
-error_symbol = "[](bold red)"
-# 
-
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
-
-[conda]
-format = '\[[$symbol$environment]($style)\]'
-
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
-
-[dart]
-format = '\[[$symbol($version)]($style)\]'
-
-[deno]
-format = '\[[$symbol($version)]($style)\]'
+format = """
+[░▒▓](blue)\
+[  ](bg:blue fg:#090c0c)\
+[](bg:blue fg:black)\
+$shell\
+[](bg:purple fg:blue)\
+[  ](bg:purple fg:black)\
+$directory\
+[](fg:purple bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#212736)\
+$python\
+$php\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+"""
 
 [directory]
-format = '[\[[$path](blue)[$read_only]($read_only_style)\]](green)'
-style = "blue"
-read_only = ""
-read_only_style = "red"
+style = "bg:purple fg:black"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
-
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-
-[elm]
-format = '\[[$symbol($version)]($style)\]'
-
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+".config" = " "
+"~" = ""
 
 [git_branch]
-format = '[{](green bold) [$symbol$branch]($style) [}](green bold)'
-style = "bold green"
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
-
-[golang]
-format = '\[[$symbol($version)]($style)\]'
-
-[helm]
-format = '\[[$symbl($version)]($style)\]'
-
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
-
-[java]
-format = '\[[$symbol($version)]($style)\]'
-
-[jobs]
-format = "[+ ](blue)"
-
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
-
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[package]
-format = '\[[$symbol$version]($style)\]'
-
-[perl]
-format = '\[[$symbol($version)]($style)\]'
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
 
 [php]
-format = '\[[$symbol($version)]($style)\]'
-
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol  ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [python]
-format = '[\[[ ${pyenv_prefix}(${version})(\($virtualenv\))](bold yellow)\]]($style)'
-style = "bold purple"
+style = "bg:#212736"
+symbol = ""
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
-[red]
-format = '\[[$symbol($version)]($style)\]'
-
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
-
-[rust]
-format = '\[[$symbol($version)]($style)\]'
-
-[scala]
-format = '\[[$symbol($version)]($style)\]'
-
-[sudo]
-format = '\[[as $symbol]\]'
-
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-format = '\[[$symbol$workspace]($style)\]'
+[shell]
+#powershell_indicator = ""
+powershell_indicator = ""
+style = "bg:blue fg:black"
+format = "[ $indicator ]($style)"
+disabled = false
 
 [time]
-format = '[$time]($style)'
-style = "blue"
 disabled = false
-time_format = "%T"
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
-[username]
-format = '\[[$user]($style)\]'
 
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-format = '\[[$symbol($version)]($style)\]'
-
+#
+#
